@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getBeers } from '../apiCalls/apiCalls';
+import { getPage1Beers, getBeerByName } from '../apiCalls/apiCalls';
 import { setBeers } from '../actions/index';
 import './App.css';
-import { bindActionCreators } from '../../../../../../Library/Caches/typescript/3.6/node_modules/redux';
+import { bindActionCreators } from 'redux';
 
 export class App extends Component {
   componentDidMount = async () => {
     const { setBeers } = this.props;
     try {
-      let beerData = await getBeers();
+      let beerData = await getPage1Beers();
       setBeers(beerData);
-      console.log(beerData);
+      console.log('1', beerData);
     } catch ({ message }) {
       console.log(message);
     }
@@ -29,7 +29,8 @@ export const mapStateToProps = ({ beers }) => ({
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      setBeers
+      setBeers,
+      getBeerByName
     },
     dispatch
   );
