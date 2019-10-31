@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPage1Beers, getBeerByName } from '../apiCalls/apiCalls';
-import { setBeers } from '../actions/index';
+import { Route } from 'react-router-dom';
+import { Container } from '../Container/Container';
+import { getPage1Beers, getBeerByName } from '../../apiCalls/apiCalls';
+import { setBeers } from '../../actions/index';
 import './App.css';
 import { bindActionCreators } from 'redux';
 
@@ -11,14 +13,19 @@ export class App extends Component {
     try {
       let beerData = await getPage1Beers();
       setBeers(beerData);
-      console.log('1', beerData);
+
     } catch ({ message }) {
       console.log(message);
     }
   };
 
   render() {
-    return <div className='App'></div>;
+    const { beers } = this.props;
+    return (
+      <div className='App'>
+        <Route path='/beers' render={() => <Container beers={beers} />} />
+      </div>
+    );
   }
 }
 
