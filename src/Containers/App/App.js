@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { Container } from '../Container/Container';
+import { BeerPage } from '../BeerPage/BeerPage';
 import { getPage1Beers, getBeerByName } from '../../apiCalls/apiCalls';
 import { setBeers } from '../../actions/index';
 import './App.css';
@@ -13,7 +14,6 @@ export class App extends Component {
     try {
       let beerData = await getPage1Beers();
       setBeers(beerData);
-
     } catch ({ message }) {
       console.log(message);
     }
@@ -23,7 +23,21 @@ export class App extends Component {
     const { beers } = this.props;
     return (
       <div className='App'>
-        <Route path='/beers' render={() => <Container beers={beers} />} />
+        <Route exact path='/beers' render={() => <Container beers={beers} />} />
+        <Route
+          exact path='/beers/:id'
+          render={({ match }) => {
+            const beerDetails = beers.find(
+              beer => beer.id === parseInt(match.params.id)
+            );
+            return (
+              <BeerPage
+                beerDetails={beerDetails}
+                match={match}
+              />
+            );
+          }}
+        />
       </div>
     );
   }
