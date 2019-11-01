@@ -1,0 +1,13 @@
+.BeerPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.BeerPage__section--header {
+  display: flex;
+}
+
+.BeerPage__section--stats,
+.BeerPage__aside--ingredients {
+  width: 33%;
+}

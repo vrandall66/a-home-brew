@@ -1,4 +1,5 @@
 import React from 'react';
+import './BeerPage.scss'
 
 export const BeerPage = ({ beerDetails, match }) => {
   const allHops = beerDetails.ingredients.hops.map((hop, index) => {
@@ -42,9 +43,11 @@ export const BeerPage = ({ beerDetails, match }) => {
   });
 
   return (
-    <div key={beerDetails.id}>
-      <h2>{beerDetails.name}</h2>
+    <div className='BeerPage' key={beerDetails.id}>
+      <section className='BeerPage__section--header'>
+      <h2 className="BeerPage__h2--beerName">{beerDetails.name}</h2>
       <h3>{beerDetails.tagline}</h3>
+      </section>
       <h5>Description</h5>
       <p>{beerDetails.description}</p>
       <h5>Brewer's Tips</h5>
@@ -60,6 +63,7 @@ export const BeerPage = ({ beerDetails, match }) => {
         Fermentation: {beerDetails.method.fermentation.temp.value}{' '}
         {beerDetails.method.fermentation.temp.unit}
       </h5>
+      <section className="BeerPage__section--stats">
       <ul>
         <li>ABV: {beerDetails.abv}</li>
         <li>Attenuation Level: {beerDetails.attenuation_level}</li>
@@ -74,7 +78,8 @@ export const BeerPage = ({ beerDetails, match }) => {
         <li>Target FG: {beerDetails.target_fg}</li>
         <li>Target OG: {beerDetails.target_og}</li>
       </ul>
-      <aside>
+      </section>
+      <aside className="BeerPage__aside--ingredients">
         <h4>Ingredients</h4>
         <ul>
           Hops
