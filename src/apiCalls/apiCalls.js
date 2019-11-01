@@ -74,7 +74,7 @@ export const getBeerByHops = async hops => {
 };
 
 export const getBeerByMalt = async malt => {
-  const response = await fetch(`${baseUrl}malt=${malt}`);
+  const response = await fetch(`${baseUrl}?malt=${malt}`);
   if (!response.ok) {
     throw new Error('Could not retrieve beers, please explore with us later.');
   }

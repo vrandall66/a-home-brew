@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
-import { getPage1Beers, getBeerByName } from '../../apiCalls/apiCalls';
+import { getPage1Beers } from '../../apiCalls/apiCalls';
 import { setBeers } from '../../actions/index';
 import './App.css';
 import { bindActionCreators } from 'redux';
@@ -47,8 +47,7 @@ export const mapStateToProps = ({ beers }) => ({
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      setBeers,
-      getBeerByName
+      setBeers
     },
     dispatch
   );
