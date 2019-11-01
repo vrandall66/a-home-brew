@@ -1,10 +1,9 @@
 import React from 'react';
 
 export const BeerPage = ({ beerDetails, match }) => {
-  console.log(beerDetails);
-  const allHops = beerDetails.ingredients.hops.map(hop => {
+  const allHops = beerDetails.ingredients.hops.map((hop, index) => {
     return (
-      <ul>
+      <ul key={index}>
         {hop.name}
         <li>Attribute: {hop.attribute}</li>
         <li>When to add it: {hop.add}</li>
@@ -17,9 +16,9 @@ export const BeerPage = ({ beerDetails, match }) => {
     );
   });
 
-  const allMalts = beerDetails.ingredients.malt.map(malt => {
+  const allMalts = beerDetails.ingredients.malt.map((malt, index) => {
     return (
-      <ul>
+      <ul key={index}>
         {malt.name}
         <ul>
           <li>
@@ -30,20 +29,20 @@ export const BeerPage = ({ beerDetails, match }) => {
     );
   });
 
-  const allFoods = beerDetails.food_pairing.map(meal => {
-    return <li>{meal}</li>;
+  const allFoods = beerDetails.food_pairing.map((meal, index) => {
+    return <li key={index}>{meal}</li>;
   });
 
-  const mash_temp = beerDetails.method.mash_temp.map(temp => {
+  const mash_temp = beerDetails.method.mash_temp.map((temp, index) => {
     return (
-      <li>
+      <li key={index}>
         {temp.temp.value} {temp.temp.unit}{' '}
       </li>
     );
   });
 
   return (
-    <div>
+    <div key={beerDetails.id}>
       <h2>{beerDetails.name}</h2>
       <h3>{beerDetails.tagline}</h3>
       <h5>Description</h5>

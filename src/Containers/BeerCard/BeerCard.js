@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const BeerCard = ({ beer }) => {
   return (
-    <div className='BeerCard'>
+    <div className='BeerCard' key={beer.id}>
       <h4>{beer.name}</h4>
       <p>{beer.tagline}</p>
       <Link to={`/beers/${beer.id}`}>
