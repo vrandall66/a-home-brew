@@ -14,7 +14,7 @@ export class App extends Component {
     try {
       let beerData = await getPage1Beers();
       setBeers(beerData);
-      console.log(beerData)
+      console.log(beerData);
     } catch ({ message }) {
       console.log(message);
     }
@@ -26,17 +26,13 @@ export class App extends Component {
       <div className='App'>
         <Route exact path='/beers' render={() => <Container beers={beers} />} />
         <Route
-          exact path='/beers/:id'
+          exact
+          path='/beers/:id'
           render={({ match }) => {
             const beerDetails = beers.find(
               beer => beer.id === parseInt(match.params.id)
             );
-            return (
-              <BeerPage
-                beerDetails={beerDetails}
-                match={match}
-              />
-            );
+            return <BeerPage beerDetails={beerDetails} match={match} />;
           }}
         />
       </div>
