@@ -14,6 +14,7 @@ export class App extends Component {
     try {
       let beerData = await getPage1Beers();
       setBeers(beerData);
+      console.log(beerData)
     } catch ({ message }) {
       console.log(message);
     }
