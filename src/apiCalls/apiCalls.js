@@ -78,15 +78,15 @@ export const getBeerByMalt = async malt => {
   if (!response.ok) {
     throw new Error('Could not retrieve beers, please explore with us later.');
   }
-  const data = response.json();
+  const data = await response.json();
   return data;
 };
 
 export const getBeerByYeast = async yeast => {
-  const response = await fetch(`${baseUrl}yeast=${yeast}`);
+  const response = await fetch(`${baseUrl}?yeast=${yeast}`);
   if (!response.ok) {
     throw new Error('Could not retrieve beers, please explore with us later.');
   }
-  const data = response.json();
+  const data = await response.json();
   return data;
 };
