@@ -6,9 +6,15 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { toggleBookmark, setBookmark } from '../../actions';
 import './BeerCard.scss';
 
-export const BeerCard = ({ beer, toggleBookmark, setBookmark, bookmarks }) => {
-  const handleClick = () => {
-    console.log('hello');
+export const BeerCard = ({
+  beer,
+  type,
+  toggleBookmark,
+  setBookmark,
+  bookmarks
+}) => {
+  const handleClick = e => {
+    e.preventDefault();
     let foundBeer = bookmarks.find(brew => {
       return brew.id === beer.id;
     });
@@ -20,7 +26,7 @@ export const BeerCard = ({ beer, toggleBookmark, setBookmark, bookmarks }) => {
       <FaRegBookmark onClick={handleClick} />
       <h4 className='BeerCard__h4--name'>{beer.name}</h4>
       <p className='BeerCard__p--tagline'>{beer.tagline}</p>
-      <Link to={`/beers/${beer.id}`}>
+      <Link to={`/${type}/${beer.id}`}>
         <button type='button' className='BeerCard__button--readMore'>
           Read More
         </button>

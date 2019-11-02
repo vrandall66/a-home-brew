@@ -68,7 +68,6 @@ export class App extends Component {
         previous: false
       };
     });
-    console.log('newData', newBeerData);
     return this.markBookmarks(newBeerData);
   };
 
@@ -79,20 +78,22 @@ export class App extends Component {
         ? { ...beer, bookmarked: true }
         : { ...beer, bookmarked: false };
     });
-    console.log('booked', bookmarked);
     return setBeers(bookmarked);
   };
 
   render() {
-    const { beers } = this.props;
+    const { beers, bookmarks } = this.props;
     return (
       <div className='App'>
         <Nav />
         <Header />
-        <Route exact path='/' render={() => <Container beers={beers} />} />
+        <Route exact path='/' render={() => <Container beers={beers} type={'beers'} />} />
         <Route
-          exact
-          path='/beers/:id'
+          exact path='/bookmarked'
+          render={() => <Container beers={bookmarks} type={'bookmarked'} />}
+        />
+        <Route
+          exact path='/beers/:id'
           render={({ match }) => {
             const beerDetails = beers.find(
               beer => beer.id === parseInt(match.params.id)
