@@ -44,7 +44,6 @@ export const BeerPage = ({ beerDetails }) => {
 
   return (
     <div className='BeerPage' key={beerDetails.id}>
-      <section className='BeerPage__section--left'>
         <section className='BeerPage__section--stats'>
           <ul>
             <li>ABV: {beerDetails.abv}</li>
@@ -73,8 +72,6 @@ export const BeerPage = ({ beerDetails }) => {
           </ul>
           <p>{beerDetails.ingredients.yeast}</p>
         </aside>
-      </section>
-      <section className='BeerPage__section--right'>
         <section className='BeerPage__section--header'>
           <h2 className='BeerPage__h2--beerName'>{beerDetails.name}</h2>
           <h3>{beerDetails.tagline}</h3>
@@ -105,7 +102,6 @@ export const BeerPage = ({ beerDetails }) => {
             {beerDetails.method.fermentation.temp.unit}
           </h5>
         </section>
-      </section>
     </div>
   );
 };

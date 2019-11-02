@@ -4,15 +4,15 @@ import { Route } from 'react-router-dom';
 import { Nav } from '../Nav/Nav';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
-import { getPage1Beers } from '../../apiCalls/apiCalls';
+import { getExampleBeers } from '../../apiCalls/apiCalls';
 import { setBeers, addProperties } from '../../actions/index';
-import './App.css';
+import './App.scss';
 import { bindActionCreators } from 'redux';
 
 export class App extends Component {
   componentDidMount = async () => {
     try {
-      let beerData = await getPage1Beers();
+      let beerData = await getExampleBeers();
       this.updateDataFromFetch(beerData);
     } catch ({ message }) {
       console.log(message);

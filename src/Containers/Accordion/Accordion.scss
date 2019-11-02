@@ -5,8 +5,7 @@
 }
 
 .Accordion__section {
-  display: flex;
-  flex-direction: column;
+  grid-area: nav;
 }
 
 .Accordion {

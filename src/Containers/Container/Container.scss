@@ -1,8 +1,11 @@
+* {
+  border: 1px solid pink;
+}
+
 .Container {
-  display: grid;
-  grid-gap: 50px 40px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: auto;
-  justify-items: center;
-  padding: 40px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: container;
+  justify-content: space-between;
+  overflow: scroll;
 }

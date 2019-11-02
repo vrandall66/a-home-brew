@@ -1,3 +1,9 @@
 .BeerCard {
-  width: 100%;
+  display: grid;
+  margin: 1.5%;
+  width: 25%;
+}
+
+.BeerCard__h4--name {
+  margin: 0;
 }

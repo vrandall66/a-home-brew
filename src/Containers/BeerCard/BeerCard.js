@@ -18,10 +18,12 @@ export const BeerCard = ({ beer, toggleBookmark, setBookmark, bookmarks }) => {
   return (
     <div className='BeerCard' key={beer.id}>
       <FaRegBookmark onClick={handleClick} />
-      <h4>{beer.name}</h4>
-      <p>{beer.tagline}</p>
+      <h4 className='BeerCard__h4--name'>{beer.name}</h4>
+      <p className='BeerCard__p--tagline'>{beer.tagline}</p>
       <Link to={`/beers/${beer.id}`}>
-        <button type='button'>Read More</button>
+        <button type='button' className='BeerCard__button--readMore'>
+          Read More
+        </button>
       </Link>
     </div>
   );
