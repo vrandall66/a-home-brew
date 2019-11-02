@@ -6,12 +6,14 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { toggleBookmark, setBookmark } from '../../actions';
 import './BeerCard.scss';
 
-export const BeerCard = ({ beer, toggleBookmark, setBookmark }) => {
-
+export const BeerCard = ({ beer, toggleBookmark, setBookmark, bookmarks }) => {
   const handleClick = () => {
-    setBookmark(beer)
-    toggleBookmark(beer)
-  }
+    console.log('hello');
+    let foundBeer = bookmarks.find(brew => {
+      return brew.id === beer.id;
+    });
+    return foundBeer ? toggleBookmark(beer) : setBookmark(beer);
+  };
 
   return (
     <div className='BeerCard' key={beer.id}>
@@ -25,8 +27,15 @@ export const BeerCard = ({ beer, toggleBookmark, setBookmark }) => {
   );
 };
 
+export const mapStateToProps = ({ bookmarks }) => ({
+  bookmarks
+});
+
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ toggleBookmark, setBookmark }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(BeerCard);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BeerCard);

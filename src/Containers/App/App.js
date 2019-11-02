@@ -20,8 +20,7 @@ export class App extends Component {
   };
 
   updateDataFromFetch = beerData => {
-    const { setBeers } = this.props;
-    let newData = beerData.map(beer => {
+    let newBeerData = beerData.map(beer => {
       const {
         id,
         name,
@@ -68,8 +67,19 @@ export class App extends Component {
         previous: false
       };
     });
+    console.log('newData', newBeerData);
+    return this.markBookmarks(newBeerData);
+  };
 
-    setBeers(newData);
+  markBookmarks = newBeerData => {
+    const { setBeers, bookmarks } = this.props;
+    let bookmarked = newBeerData.map(beer => {
+      return bookmarks.find(brew => brew.id === beer.id)
+        ? { ...beer, bookmarked: true }
+        : { ...beer, bookmarked: false };
+    });
+    console.log('booked', bookmarked);
+    return setBeers(bookmarked);
   };
 
   render() {
@@ -93,8 +103,9 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({ beers }) => ({
-  beers
+export const mapStateToProps = ({ beers, bookmarks }) => ({
+  beers,
+  bookmarks
 });
 
 export const mapDispatchToProps = dispatch => {
