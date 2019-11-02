@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { FaRegBookmark } from 'react-icons/fa';
-import { toggleBookmark, setBookmark } from '../../actions';
+import { toggleBookmark, setBookmark, removeBookmark } from '../../actions';
 import './BeerCard.scss';
 
 export class BeerCard extends Component {
@@ -17,19 +17,36 @@ export class BeerCard extends Component {
   }
 
   handleClick = e => {
-    const { beer, beers, toggleBookmark } = this.props;
+    const { beer, beers } = this.props;
     e.preventDefault();
     let foundBeer = beers.find(brew => {
       return brew.id === beer.id;
     });
     let bookmarked = (foundBeer.bookmarked = true);
-    return !bookmarked ? this.handleAddBookmark(beer) : toggleBookmark(beer);
+    return bookmarked ? this.handleAddBookmark(beer) : this.handleRemoveBookmark;
   };
 
   handleAddBookmark = beer => {
-    const { toggleBookmark, setBookmark } = this.props;
-    toggleBookmark(beer)
-    setBookmark(beer)
+    const {
+      toggleBookmark,
+      setBookmark,
+      bookmarks
+    } = this.props;
+    toggleBookmark(beer);
+    let found = bookmarks.find(brew => {
+      return beer.id === brew.id;
+    });
+    found ? this.handleRemoveBookmark(beer) : setBookmark(beer);
+  };
+
+  handleRemoveBookmark = beer => {
+    const { bookmarks, removeBookmark, toggleBookmark } = this.props;
+    let foundBeer = bookmarks.find(brew => {
+      return brew.id === beer.id;
+    });
+    let unBookmarked = (foundBeer.bookmarked = false);
+    toggleBookmark(unBookmarked)
+    removeBookmark(unBookmarked)
   }
 
   render() {
@@ -55,7 +72,7 @@ export const mapStateToProps = ({ beers, bookmarks }) => ({
 });
 
 export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ toggleBookmark, setBookmark }, dispatch);
+  bindActionCreators({ toggleBookmark, setBookmark, removeBookmark }, dispatch);
 
 export default connect(
   mapStateToProps,

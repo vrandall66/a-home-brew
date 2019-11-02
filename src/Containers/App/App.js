@@ -106,7 +106,7 @@ export class App extends Component {
         <Route
           exact
           path='/bookmarked'
-          render={() => <Container beers={bookmarks} type={'bookmarks'} />}
+          render={() => <Container beers={beers} type={'bookmarks'} />}
         />
         <Route
           exact

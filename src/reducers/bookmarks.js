@@ -1,14 +1,15 @@
 export const bookmarks = (state = [], action) => {
   switch (action.type) {
     case 'SET_BOOKMARK':
-      let newState = [...state, action.beer]
-      return newState;
+      return [...state, action.beer];
     case 'TOGGLE_BOOKMARK':
       return state.map(beer =>
         beer.name === action.beer.name
           ? { ...beer, bookmarked: !beer.bookmarked }
           : beer
       );
+    case 'REMOVE_BOOKMARK':
+      return state.filter(brew => action.beer.id !== brew.id);
     default:
       return state;
   }

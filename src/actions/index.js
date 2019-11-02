@@ -6,7 +6,7 @@ export const setBeers = beers => ({
 export const addProperties = beers => ({
   type: 'ADD_PROPERTIES',
   beers
-})
+});
 
 export const setLoading = bool => ({
   type: 'IS_LOADING',
@@ -25,6 +25,11 @@ export const toggleBookmark = beer => ({
 
 export const setBookmark = beer => ({
   type: 'SET_BOOKMARK',
+  beer
+});
+
+export const removeBookmark = beer => ({
+  type: 'REMOVE_BOOKMARK',
   beer
 });
 
