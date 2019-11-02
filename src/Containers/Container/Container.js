@@ -3,18 +3,15 @@ import BeerCard from '../BeerCard/BeerCard';
 import './Container.scss';
 
 export const Container = ({ beers, type }) => {
-  const displayBeers = beers.map(beer => {
-    return <BeerCard key={beer.id} beer={beer} type={type}/>;
-  });
+  const beersLength = beers.length ? (
+    beers.map(beer => {
+      return <BeerCard key={beer.id} beer={beer} type={type} />;
+    })
+  ) : (
+    <div>{`There are no ${type}!`}</div>
+  );
 
-  switch (type) {
-    case 'browse':
-      return <div className='Container'>{displayBeers}</div>;
-    case 'bookmarked':
-      return <div className='Container'>{displayBeers}</div>;
-    default:
-      return <div className='Container'>{displayBeers}</div>;
-  }
+  return <div className='Container'>{beersLength}</div>;
 };
 
 export default Container;

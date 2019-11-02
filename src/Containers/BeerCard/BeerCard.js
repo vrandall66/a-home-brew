@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -6,42 +6,56 @@ import { FaRegBookmark } from 'react-icons/fa';
 import { toggleBookmark, setBookmark } from '../../actions';
 import './BeerCard.scss';
 
-export const BeerCard = ({
-  beer,
-  type,
-  toggleBookmark,
-  setBookmark,
-  bookmarks
-}) => {
-  const handleClick = e => {
+export class BeerCard extends Component {
+  constructor() {
+    super();
+    this.state = {
+      bookmarked: false,
+      current: false,
+      previous: false
+    };
+  }
+
+  handleClick = e => {
+    const { beer, beers, toggleBookmark } = this.props;
     e.preventDefault();
-    let foundBeer = bookmarks.find(brew => {
+    let foundBeer = beers.find(brew => {
       return brew.id === beer.id;
     });
-    return foundBeer ? toggleBookmark(beer) : setBookmark(beer);
+    let bookmarked = (foundBeer.bookmarked = true);
+    return !bookmarked ? this.handleAddBookmark(beer) : toggleBookmark(beer);
   };
 
-  return (
-    <div className='BeerCard' key={beer.id}>
-      <FaRegBookmark onClick={handleClick} />
-      <h4 className='BeerCard__h4--name'>{beer.name}</h4>
-      <p className='BeerCard__p--tagline'>{beer.tagline}</p>
-      <Link to={`/${type}/${beer.id}`}>
-        <button type='button' className='BeerCard__button--readMore'>
-          Read More
-        </button>
-      </Link>
-    </div>
-  );
-};
+  handleAddBookmark = beer => {
+    const { toggleBookmark, setBookmark } = this.props;
+    toggleBookmark(beer)
+    setBookmark(beer)
+  }
 
-export const mapStateToProps = ({ bookmarks }) => ({
+  render() {
+    const { beer, type } = this.props;
+    return (
+      <div className='BeerCard' key={beer.id}>
+        <FaRegBookmark onClick={this.handleClick} />
+        <h4 className='BeerCard__h4--name'>{beer.name}</h4>
+        <p className='BeerCard__p--tagline'>{beer.tagline}</p>
+        <Link to={`/${type}/${beer.id}`}>
+          <button type='button' className='BeerCard__button--readMore'>
+            Read More
+          </button>
+        </Link>
+      </div>
+    );
+  }
+}
+
+export const mapStateToProps = ({ beers, bookmarks }) => ({
+  beers,
   bookmarks
 });
 
-export const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ toggleBookmark, setBookmark }, dispatch);
-};
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators({ toggleBookmark, setBookmark }, dispatch);
 
 export default connect(
   mapStateToProps,

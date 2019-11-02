@@ -6,6 +6,18 @@ export const Nav = () => {
   return (
     <div className='Nav'>
       <h4>Search beers by:</h4>
+      <Link to='/beers/by_name'>
+        <li className='Nav__li Nav__li--bookmarked'>By Name</li>
+      </Link>
+      <Link to='/beers/by_hops'>
+        <li className='Nav__li Nav__li--bookmarked'>By Hops</li>
+      </Link>
+      <Link to='/beers/by_malt'>
+        <li className='Nav__li Nav__li--bookmarked'>By Malt</li>
+      </Link>
+      <Link to='/beers/by_yeast'>
+        <li className='Nav__li Nav__li--bookmarked'>By Yeast</li>
+      </Link>
       <h4>Your Brewery:</h4>
       <ul className='Nav__ul--your-brewery'>
         <Link to='/bookmarked'>

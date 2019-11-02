@@ -5,6 +5,7 @@ import { Nav } from '../Nav/Nav';
 import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
+import { SearchForm } from '../SearchForm/SearchForm';
 import { getExampleBeers } from '../../apiCalls/apiCalls';
 import { setBeers, addProperties } from '../../actions/index';
 import './App.scss';
@@ -82,18 +83,34 @@ export class App extends Component {
   };
 
   render() {
-    const { beers, bookmarks } = this.props;
+    const { beers, bookmarks, getBeersByName } = this.props;
     return (
       <div className='App'>
         <Nav />
         <Header />
-        <Route exact path='/' render={() => <Container beers={beers} type={'beers'} />} />
         <Route
-          exact path='/bookmarked'
-          render={() => <Container beers={bookmarks} type={'bookmarked'} />}
+          exact
+          path='/'
+          render={() => <Container beers={beers} type={'beers'} />}
         />
         <Route
-          exact path='/beers/:id'
+          exact
+          path='/beers/by_name'
+          render={() => (
+            <>
+              <SearchForm getBeersByType={getBeersByName} />
+              <Container beers={beers} type={'by_name'} />
+            </>
+          )}
+        />
+        <Route
+          exact
+          path='/bookmarked'
+          render={() => <Container beers={bookmarks} type={'bookmarks'} />}
+        />
+        <Route
+          exact
+          path='/beers/:id'
           render={({ match }) => {
             const beerDetails = beers.find(
               beer => beer.id === parseInt(match.params.id)

@@ -42,8 +42,9 @@ export const BeerPage = ({ beerDetails }) => {
     );
   });
 
-  return (
-    <div className='BeerPage' key={beerDetails.id}>
+  const checkForBeer = () => {
+    return beerDetails.name ? (
+      <>
         <section className='BeerPage__section--stats'>
           <ul>
             <li>ABV: {beerDetails.abv}</li>
@@ -102,6 +103,15 @@ export const BeerPage = ({ beerDetails }) => {
             {beerDetails.method.fermentation.temp.unit}
           </h5>
         </section>
+      </>
+    ) : (
+      <h2>There are no results yet.</h2>
+    );
+  };
+
+  return (
+    <div className='BeerPage' key={beerDetails.id}>
+      {checkForBeer}
     </div>
   );
 };
