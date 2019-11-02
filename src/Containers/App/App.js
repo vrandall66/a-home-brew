@@ -106,7 +106,7 @@ export class App extends Component {
         <Route
           exact
           path='/bookmarked'
-          render={() => <Container beers={beers} type={'bookmarks'} />}
+          render={() => <Container beers={bookmarks} type={'bookmarks'} />}
         />
         <Route
           exact
@@ -123,9 +123,10 @@ export class App extends Component {
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks }) => ({
+export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
   beers,
-  bookmarks
+  bookmarks,
+  previousBrews
 });
 
 export const mapDispatchToProps = dispatch => {

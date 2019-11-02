@@ -4,7 +4,7 @@ export const bookmarks = (state = [], action) => {
       return [...state, action.beer];
     case 'TOGGLE_BOOKMARK':
       return state.map(beer =>
-        beer.name === action.beer.name
+        beer.id === action.beer.id
           ? { ...beer, bookmarked: !beer.bookmarked }
           : beer
       );

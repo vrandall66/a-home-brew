@@ -38,6 +38,7 @@ export const addCurrentlyBrewing = beer => ({
   beer
 });
 
-export const resetFavorites = () => ({
-  type: 'RESET_FAVORITES'
+export const addPreviousBrew = beer => ({
+  type: 'ADD_PREVIOUS_BREW',
+  beer
 });
