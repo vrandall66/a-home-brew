@@ -18,13 +18,13 @@ export const setError = error => ({
   error
 });
 
-export const toggleBookmark = beer => ({
-  type: 'TOGGLE_BOOKMARK',
+export const setBookmark = beer => ({
+  type: 'SET_BOOKMARK',
   beer
 });
 
-export const setBookmark = beer => ({
-  type: 'SET_BOOKMARK',
+export const toggleBookmark = beer => ({
+  type: 'TOGGLE_BOOKMARK',
   beer
 });
 
@@ -40,5 +40,15 @@ export const addCurrentlyBrewing = beer => ({
 
 export const addPreviousBrew = beer => ({
   type: 'ADD_PREVIOUS_BREW',
+  beer
+});
+
+export const togglePreviousBrew = beer => ({
+  type: 'TOGGLE_PREVIOUS_BREW',
+  beer
+});
+
+export const removePreviousBrew = beer => ({
+  type: 'REMOVE_PREVIOUS_BREW',
   beer
 });

@@ -8,20 +8,13 @@ import {
   toggleBookmark,
   setBookmark,
   removeBookmark,
-  addPreviousBrew
+  addPreviousBrew,
+  removePreviousBrew,
+  togglePreviousBrew
 } from '../../actions';
 import './BeerCard.scss';
 
 export class BeerCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      bookmarked: false,
-      current: false,
-      previous: false
-    };
-  }
-
   handleBookmarkClick = e => {
     const { beer, beers } = this.props;
     let foundBeer = beers.find(brew => {
@@ -30,7 +23,7 @@ export class BeerCard extends Component {
     let bookmarked = (foundBeer.bookmarked = true);
     return bookmarked
       ? this.handleAddBookmark(beer)
-      : this.handleRemoveBookmark;
+      : this.handleRemoveBookmark(beer);
   };
 
   handleAddBookmark = beer => {
@@ -53,13 +46,30 @@ export class BeerCard extends Component {
   };
 
   handlePreviousBrewClick = e => {
-    const { beer, beers, addPreviousBrew } = this.props;
-    console.log(beer);
+    const { beer, beers } = this.props;
     let foundBeer = beers.find(brew => {
       return brew.id === beer.id;
     });
     let previousBrew = (foundBeer.previous = true);
-    return previousBrew ? addPreviousBrew(beer) : null;
+    return previousBrew
+      ? this.handleAddPreviousBrew(beer)
+      : this.handleRemovePreviousBrew(beer);
+  };
+
+  handleAddPreviousBrew = beer => {
+    const { togglePreviousBrew, addPreviousBrew, previousBrews } = this.props;
+    togglePreviousBrew(beer);
+    let found = previousBrews.find(brew => beer.id === brew.id);
+    return found ? this.handleRemovePreviousBrew(beer) : addPreviousBrew(beer);
+  };
+
+  handleRemovePreviousBrew = beer => {
+    const { previousBrews, removePreviousBrew } = this.props;
+    let foundBeer = previousBrews.find(brew => {
+      return brew.id === beer.id;
+    });
+    let notPrevious = (foundBeer.previous = false);
+    removePreviousBrew(notPrevious);
   };
 
   render() {
@@ -82,14 +92,22 @@ export class BeerCard extends Component {
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks }) => ({
+export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
   beers,
-  bookmarks
+  bookmarks,
+  previousBrews
 });
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
-    { toggleBookmark, setBookmark, removeBookmark, addPreviousBrew },
+    {
+      toggleBookmark,
+      setBookmark,
+      removeBookmark,
+      togglePreviousBrew,
+      addPreviousBrew,
+      removePreviousBrew
+    },
     dispatch
   );
 
