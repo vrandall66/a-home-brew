@@ -1,12 +1,12 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 import { beers } from './beers';
 import { setLoading } from './setLoading';
-import { favorites } from './favorites'
+import { bookmarks } from './bookmarks';
 
 const rootReducer = combineReducers({
   beers,
   setLoading,
-  favorites
-})
+  bookmarks
+});
 
 export default rootReducer;

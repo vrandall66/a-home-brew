@@ -3,6 +3,11 @@ export const setBeers = beers => ({
   beers
 });
 
+export const addProperties = beers => ({
+  type: 'ADD_PROPERTIES',
+  beers
+})
+
 export const setLoading = bool => ({
   type: 'IS_LOADING',
   bool
@@ -13,19 +18,19 @@ export const setError = error => ({
   error
 });
 
-export const toggleFavorite = name => ({
-  type: 'TOGGLE_FAVORITE',
-  name
+export const toggleBookmark = beer => ({
+  type: 'TOGGLE_BOOKMARK',
+  beer
 });
 
-export const setFavorites = favorites => ({
-  type: 'SET_FAVORITES',
-  favorites
+export const setBookmark = beer => ({
+  type: 'SET_BOOKMARK',
+  beer
 });
 
-export const addFavorite = newFavorite => ({
-  type: 'ADD_FAVORITE',
-  newFavorite
+export const addCurrentlyBrewing = beer => ({
+  type: 'ADD_CURRENTLY_BREWING',
+  beer
 });
 
 export const resetFavorites = () => ({

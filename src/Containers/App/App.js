@@ -5,19 +5,71 @@ import { Nav } from '../Nav/Nav';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getPage1Beers } from '../../apiCalls/apiCalls';
-import { setBeers } from '../../actions/index';
+import { setBeers, addProperties } from '../../actions/index';
 import './App.css';
 import { bindActionCreators } from 'redux';
 
 export class App extends Component {
   componentDidMount = async () => {
-    const { setBeers } = this.props;
     try {
       let beerData = await getPage1Beers();
-      setBeers(beerData);
+      this.updateDataFromFetch(beerData);
     } catch ({ message }) {
       console.log(message);
     }
+  };
+
+  updateDataFromFetch = beerData => {
+    const { setBeers } = this.props;
+    let newData = beerData.map(beer => {
+      const {
+        id,
+        name,
+        tagline,
+        first_brewed,
+        description,
+        abv,
+        ibu,
+        target_fg,
+        target_og,
+        ebc,
+        srm,
+        ph,
+        attenuation_level,
+        volume,
+        boil_volume,
+        method,
+        ingredients,
+        food_pairing,
+        brewers_tips
+      } = beer;
+      return {
+        id,
+        name,
+        tagline,
+        first_brewed,
+        description,
+        abv,
+        ibu,
+        target_fg,
+        target_og,
+        ebc,
+        srm,
+        ph,
+        attenuation_level,
+        volume,
+        boil_volume,
+        method,
+        ingredients,
+        food_pairing,
+        brewers_tips,
+        bookmarked: false,
+        current: false,
+        previous: false
+      };
+    });
+
+    setBeers(newData);
   };
 
   render() {
@@ -48,7 +100,8 @@ export const mapStateToProps = ({ beers }) => ({
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      setBeers
+      setBeers,
+      addProperties
     },
     dispatch
   );
