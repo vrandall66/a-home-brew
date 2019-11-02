@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import { Nav } from '../Nav/Nav';
+import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getExampleBeers } from '../../apiCalls/apiCalls';
@@ -87,6 +88,7 @@ export class App extends Component {
     return (
       <div className='App'>
         <Nav />
+        <Header />
         <Route exact path='/' render={() => <Container beers={beers} />} />
         <Route
           exact
