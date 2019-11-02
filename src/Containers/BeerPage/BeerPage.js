@@ -1,7 +1,7 @@
 import React from 'react';
 import './BeerPage.scss';
 
-export const BeerPage = ({ beerDetails, match }) => {
+export const BeerPage = ({ beerDetails }) => {
   const allHops = beerDetails.ingredients.hops.map((hop, index) => {
     return (
       <ul key={index}>

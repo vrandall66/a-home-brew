@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
+import { Nav } from '../Nav/Nav';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getPage1Beers } from '../../apiCalls/apiCalls';
@@ -23,7 +24,8 @@ export class App extends Component {
     const { beers } = this.props;
     return (
       <div className='App'>
-        <Route exact path='/beers' render={() => <Container beers={beers} />} />
+        <Nav />
+        <Route exact path='/' render={() => <Container beers={beers} />} />
         <Route
           exact
           path='/beers/:id'
@@ -31,7 +33,7 @@ export class App extends Component {
             const beerDetails = beers.find(
               beer => beer.id === parseInt(match.params.id)
             );
-            return <BeerPage beerDetails={beerDetails} match={match} />;
+            return <BeerPage beerDetails={beerDetails} />;
           }}
         />
       </div>
