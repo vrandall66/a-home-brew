@@ -22,35 +22,51 @@ export class App extends Component {
     }
   };
 
+  renderBeersFromList = list => {
+    const { beers } = this.props;
+    let renderable = beers.reduce((selectedBeers, beer) => {
+      if (list.includes(beer.id)) {
+        selectedBeers.push(beer);
+      }
+      return selectedBeers;
+    }, []);
+    return renderable;
+  };
+
   render() {
     const { beers, bookmarks, getBeersByName } = this.props;
     return (
       <div className='App'>
         <Nav />
         <Header />
-        {/* {beers ? ( */}
-          <>
-            <Route exact path='/' render={() => <Container beers={beers} type={'beers'} />} />
-            <Route
-              exact path='/bookmarked'
-              render={() => <Container beers={bookmarks} type={'bookmarked'} />}
+        <Route
+          exact
+          path='/'
+          render={() => <Container beers={beers} type={'beers'} />}
+        />
+        <Route
+          exact
+          path='/bookmarked'
+          render={() => (
+            <Container
+              beers={this.renderBeersFromList(bookmarks)}
+              type={'bookmarked'}
             />
-            <Route
-              exact path='/beers/:id'
-              render={({ match }) => {
-                const beerDetails = beers.find(
-                  beer => beer.id === parseInt(match.params.id)
-                );
-                return <BeerPage beerDetails={beerDetails} />;
-              }}
-            />
-          </>
-        {/* ) : (
-          null
-        )} */}
+          )}
+        />
+        <Route
+          exact
+          path='/(beers|bookmarked)/:id'
+          render={({ match }) => {
+            const beerDetails = beers.find(
+              beer => beer.id === parseInt(match.params.id)
+            );
+            return <BeerPage beerDetails={beerDetails} />;
+          }}
+        />
       </div>
     );
-  };
+  }
 }
 
 export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
