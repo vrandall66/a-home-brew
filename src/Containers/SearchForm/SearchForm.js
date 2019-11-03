@@ -49,28 +49,33 @@ export class SearchForm extends Component {
     }, []);
   };
 
+  getYeastOptions = () => {
+    const { beers } = this.props;
+    return beers.reduce((filtered, beer) => {
+      if (!filtered.includes(beer.ingredients.yeast)) {
+        filtered.push(beer.ingredients.yeast);
+      }
+      return filtered;
+    }, []);
+  };
+
   handleSubmit = async () => {
-    console.log('hello')
     const { setSearchResults } = this.props;
+    const { hops, malt, yeast } = this.state;
     const baseUrl = 'https://api.punkapi.com/v2/beers?';
-    const maltQuery = this.state.malt ? `malt=${this.state.malt}&` : '';
-    const hopsQuery = this.state.malt ? `malt=${this.state.hops}&` : '';
-    // can be repeated for all the things
-    const response = await fetch(`${baseUrl}${hopsQuery}${maltQuery}`);
-    // can chain on more querys with template literals to endpoint
-    console.log('response??', response)
+    const hopsQuery = this.state.hops ? `hops=${hops}&` : '';
+    const maltQuery = this.state.malt ? `malt=${malt}&` : '';
+    const yeastQuery = this.state.yeast ? `yeast=${yeast}&` : '';
+    const response = await fetch(
+      `${baseUrl}${hopsQuery}${maltQuery}${yeastQuery}`
+    );
     if (!response.ok) {
       throw new Error(
         'Could not retrieve beers, please explore with us later.'
       );
     }
     const data = await response.json();
-
-    // Add search results array to store
-    // CREATE AN ACTION/REDUCER to set search results
-    // send data through action
-    console.log('search', data)
-    return await setSearchResults(data)
+    return await setSearchResults(data);
 
     // filter to which have name/description from input
     // if this.state.searchTerm
@@ -109,8 +114,6 @@ export class SearchForm extends Component {
             );
           })}
         </select>
-
-
         <label htmlFor='malt'>Malt:</label>
         <select
           id='malt'
@@ -121,6 +124,20 @@ export class SearchForm extends Component {
             return (
               <option value={malt} key={index}>
                 {malt}
+              </option>
+            );
+          })}
+        </select>
+        <label htmlFor='yeast'>Yeast:</label>
+        <select
+          id='yeast'
+          onChange={e => this.setState({ yeast: e.target.value })}
+        >
+          <option value=''>All</option>
+          {this.getYeastOptions().map((yeast, index) => {
+            return (
+              <option value={yeast} key={index}>
+                {yeast}
               </option>
             );
           })}
