@@ -88,7 +88,7 @@ export class App extends Component {
         <Route
           exact
           path='/'
-          render={() => <Container beers={beers} type={'beers'} />}
+          render={() => <Container list={null} type={'beers'} />}
         />
         <Route
           exact
@@ -96,16 +96,14 @@ export class App extends Component {
           render={() => (
             <>
               <SearchForm getBeersByType={getBeersByName} />
-              <Container beers={beers} type={'by_name'} />
+              <Container list={null} type={'by_name'} />
             </>
           )}
         />
         <Route
           exact
           path='/bookmarked'
-          render={() => (
-            <Container beers={beers} list={bookmarks} type={'bookmarks'} />
-          )}
+          render={() => <Container list={bookmarks} type={'bookmarks'} />}
         />
         <Route
           exact
