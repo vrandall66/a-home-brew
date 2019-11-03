@@ -9,21 +9,11 @@ export class SearchForm extends Component {
     super();
     this.state = {
       searchTerm: '',
-      by_name: '',
       hops: '',
       malt: '',
       yeast: ''
     };
   }
-
-  // if something in local state,
-
-  // dropdown menu for name, hops, malt, yeast
-  // run value of search
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
 
   getHopsOptions = () => {
     const { beers } = this.props;
@@ -59,13 +49,14 @@ export class SearchForm extends Component {
     }, []);
   };
 
-  handleSubmit = async () => {
+  searchByHopsMaltOrYeast = async () => {
+    console.log('Hopsy');
     const { setSearchResults } = this.props;
     const { hops, malt, yeast } = this.state;
     const baseUrl = 'https://api.punkapi.com/v2/beers?';
-    const hopsQuery = this.state.hops ? `hops=${hops}&` : '';
-    const maltQuery = this.state.malt ? `malt=${malt}&` : '';
-    const yeastQuery = this.state.yeast ? `yeast=${yeast}&` : '';
+    const hopsQuery = hops ? `hops=${hops}&` : '';
+    const maltQuery = malt ? `malt=${malt}&` : '';
+    const yeastQuery = yeast ? `yeast=${yeast}&` : '';
     const response = await fetch(
       `${baseUrl}${hopsQuery}${maltQuery}${yeastQuery}`
     );
@@ -76,19 +67,46 @@ export class SearchForm extends Component {
     }
     const data = await response.json();
     return await setSearchResults(data);
-
-    // filter to which have name/description from input
-    // if this.state.searchTerm
-    // filter by name/description, not hops/malts/yeast
-    // Compare against name and description
   };
 
-  // ideally a good idea to not make apiCalls outside of files
-  // find a way to filter results from original fetch
-  // above isn't ideal, but I wanted to practice api Queries
+  searchBySearchTerm = async () => {
+    const { setSearchResults } = this.props;
+    const { searchTerm } = this.state;
+    const baseUrl = 'https://api.punkapi.com/v2/beers?';
+    const termQuery = searchTerm ? `beer_name=${searchTerm}` : '';
+    const response = await fetch(`${baseUrl}${termQuery}`);
+    if (!response.ok) {
+      throw new Error(
+        'Could not retrieve beers, please explore with us later.'
+      );
+    }
+    const data = await response.json();
+    return await setSearchResults(data);
+  };
 
-  // Could refactor to filter manually on data collected in first API call
-  // Make an issue on GH about wanting to practice queries, but to improve app - filter data
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = () => {
+    const { hops, malt, yeast, searchTerm } = this.state;
+    if (hops || malt || yeast) {
+      this.searchByHopsMaltOrYeast();
+    }
+    if (searchTerm) {
+      this.searchBySearchTerm();
+    }
+    this.clearInputs();
+  };
+
+  clearInputs = () => {
+    const stateKeys = Object.keys(this.state);
+    stateKeys.forEach(stateKey =>
+      this.setState({
+        [stateKey]: ''
+      })
+    );
+  };
 
   render() {
     return (
@@ -142,7 +160,7 @@ export class SearchForm extends Component {
             );
           })}
         </select>
-        <button type='button' onClick={() => this.handleSubmit()}>
+        <button type='button' onClick={this.handleSubmit}>
           Search
         </button>
       </form>
