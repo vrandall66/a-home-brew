@@ -6,7 +6,7 @@ import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { SearchForm } from '../SearchForm/SearchForm';
-import { getExampleBeers } from '../../apiCalls/apiCalls';
+import { getExampleBeers, getBeersByName } from '../../apiCalls/apiCalls';
 import { setBeers } from '../../actions/index';
 import './App.scss';
 import { bindActionCreators } from 'redux';
@@ -37,12 +37,18 @@ export class App extends Component {
     const { beers, bookmarks, getBeersByName } = this.props;
     return (
       <div className='App'>
-        <Nav />
         <Header />
         <Route
           exact
           path='/'
-          render={() => <Container beers={beers} type={'beers'} />}
+          render={() => (
+            <>
+              <Nav>
+                <SearchForm />
+              </Nav>
+              <Container beers={beers} type={'beers'} />
+            </>
+          )}
         />
         <Route
           exact
@@ -63,6 +69,16 @@ export class App extends Component {
             );
             return <BeerPage beerDetails={beerDetails} />;
           }}
+        />
+        <Route
+          exact
+          path='/beers/by_name'
+          render={() => (
+            <>
+              <SearchForm name={'name'} />
+              <Container beers={beers} type={'by_name'} />
+            </>
+          )}
         />
       </div>
     );

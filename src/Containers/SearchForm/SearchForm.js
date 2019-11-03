@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 import './SearchForm.scss';
+import { getBeerByName } from '../../apiCalls/apiCalls';
 
 export class SearchForm extends Component {
   constructor() {
@@ -12,15 +13,30 @@ export class SearchForm extends Component {
   }
 
   handleChange = e => {
-    this.setState({ currentValue: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSubmit = name => {
+    switch (name) {
+      case 'name':
+        return getBeerByName(name.value);
+      default:
+        return 'Unable to search right now';
+    }
   };
 
   render() {
-    const { name, getBeersByType } = this.props;
+    const { name } = this.props;
     return (
       <form className='SearchForm'>
-        <input className='SearchForm__input--search-term'></input>
-        <button type='button' onSubmit={getBeersByType}>
+        <input
+          name='searchTerm'
+          value={this.state.searchTerm}
+          onChange={this.handleChange}
+          placeholder='Search'
+          className='SearchForm__input--search-term'
+        ></input>
+        <button type='button' onSubmit={() => this.handleSubmit(name)}>
           Search
         </button>
       </form>
