@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import BeerCard from '../BeerCard/BeerCard';
 import './Container.scss';
 
@@ -18,6 +17,12 @@ export const Container = ({ beers, type }) => {
     case 'bookmarked':
       return (
         <div className='Container' key={'bookmarked'}>
+          {displayBeers}
+        </div>
+      );
+    case 'search_results':
+      return (
+        <div className='Container' key={'search_results'}>
           {displayBeers}
         </div>
       );

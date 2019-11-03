@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { setSearchResults } from '../../actions';
 import { bindActionCreators } from 'redux';
 import './SearchForm.scss';
@@ -50,7 +51,6 @@ export class SearchForm extends Component {
   };
 
   searchByHopsMaltOrYeast = async () => {
-    console.log('Hopsy');
     const { setSearchResults } = this.props;
     const { hops, malt, yeast } = this.state;
     const baseUrl = 'https://api.punkapi.com/v2/beers?';
@@ -97,6 +97,7 @@ export class SearchForm extends Component {
       this.searchBySearchTerm();
     }
     this.clearInputs();
+    return <Redirect to='/search_results' />;
   };
 
   clearInputs = () => {
@@ -122,6 +123,7 @@ export class SearchForm extends Component {
         <select
           id='hops'
           onChange={e => this.setState({ hops: e.target.value })}
+          value={this.state.hops ? this.state.hops : 'All'}
         >
           <option value=''>All</option>
           {this.getHopsOptions().map((hops, index) => {
@@ -136,6 +138,7 @@ export class SearchForm extends Component {
         <select
           id='malt'
           onChange={e => this.setState({ malt: e.target.value })}
+          value={this.state.malt ? this.state.malt : 'All'}
         >
           <option value=''>All</option>
           {this.getMaltOptions().map((malt, index) => {
@@ -150,6 +153,7 @@ export class SearchForm extends Component {
         <select
           id='yeast'
           onChange={e => this.setState({ yeast: e.target.value })}
+          value={this.state.yeast ? this.state.yeast : 'All'}
         >
           <option value=''>All</option>
           {this.getYeastOptions().map((yeast, index) => {

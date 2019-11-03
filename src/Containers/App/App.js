@@ -33,7 +33,7 @@ export class App extends Component {
   };
 
   render() {
-    const { beers, bookmarks } = this.props;
+    const { beers, bookmarks, searchResults } = this.props;
     return (
       <div className='App'>
         <Switch>
@@ -53,22 +53,12 @@ export class App extends Component {
             path='/bookmarked'
             render={() => (
               <>
-                <Nav />
                 <Header />
+                <Nav />
                 <Container
                   beers={this.renderBeersFromList(bookmarks)}
                   type={'bookmarked'}
                 />
-              </>
-            )}
-          />
-          <Route
-            exact
-            path='/beers/by_name'
-            render={() => (
-              <>
-                <Header />
-                <Container beers={beers} type={'by_name'} />
               </>
             )}
           />
@@ -87,15 +77,32 @@ export class App extends Component {
               );
             }}
           />
+          <Route
+            exact
+            path='/search_results'
+            render={() => (
+              <>
+                <Header />
+                <Nav />
+                <Container beers={searchResults} type={'search'} />
+              </>
+            )}
+          />
         </Switch>
       </div>
     );
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
+export const mapStateToProps = ({
   beers,
   bookmarks,
+  searchResults,
+  previousBrews
+}) => ({
+  beers,
+  bookmarks,
+  searchResults,
   previousBrews
 });
 
