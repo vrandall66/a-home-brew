@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { setSearchResults } from '../../actions';
 import { bindActionCreators } from 'redux';
 import './SearchForm.scss';
@@ -89,6 +89,7 @@ export class SearchForm extends Component {
   };
 
   handleSubmit = () => {
+    const { history } = this.props;
     const { hops, malt, yeast, searchTerm } = this.state;
     if (hops || malt || yeast) {
       this.searchByHopsMaltOrYeast();
@@ -96,8 +97,8 @@ export class SearchForm extends Component {
     if (searchTerm) {
       this.searchBySearchTerm();
     }
-    this.clearInputs();
-    return <Redirect to='/search_results' />;
+    // this.clearInputs();
+    return history.push("/search");
   };
 
   clearInputs = () => {
@@ -181,7 +182,7 @@ export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ setSearchResults }, dispatch);
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(SearchForm);
+)(SearchForm));

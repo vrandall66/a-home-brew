@@ -64,7 +64,7 @@ export class App extends Component {
           />
           <Route
             exact
-            path='/(beers|bookmarked)/:id'
+            path='/(beers|bookmarked|search)/:id'
             render={({ match }) => {
               const beerDetails = beers.find(
                 beer => beer.id === parseInt(match.params.id)
@@ -79,7 +79,7 @@ export class App extends Component {
           />
           <Route
             exact
-            path='/search_results'
+            path='/search'
             render={() => (
               <>
                 <Header />
