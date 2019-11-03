@@ -3,6 +3,11 @@ export const setBeers = beers => ({
   beers
 });
 
+export const setSearchResults = beers => ({
+  type: 'SET_SEARCH_RESULTS',
+  beers
+});
+
 export const addProperties = beers => ({
   type: 'ADD_PROPERTIES',
   beers

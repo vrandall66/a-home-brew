@@ -5,8 +5,7 @@ import { Nav } from '../Nav/Nav';
 import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
-import { SearchForm } from '../SearchForm/SearchForm';
-import { getExampleBeers, getBeersByName } from '../../apiCalls/apiCalls';
+import { getAllBeers } from '../../apiCalls/apiCalls';
 import { setBeers } from '../../actions/index';
 import './App.scss';
 import { bindActionCreators } from 'redux';
@@ -15,7 +14,7 @@ export class App extends Component {
   componentDidMount = async () => {
     const { setBeers } = this.props;
     try {
-      let beerData = await getExampleBeers();
+      let beerData = await getAllBeers([], 1);
       setBeers(beerData);
     } catch ({ message }) {
       console.log(message);
@@ -34,7 +33,7 @@ export class App extends Component {
   };
 
   render() {
-    const { beers, bookmarks, getBeersByName } = this.props;
+    const { beers, bookmarks } = this.props;
     return (
       <div className='App'>
         <Switch>
@@ -43,9 +42,7 @@ export class App extends Component {
             path='/'
             render={() => (
               <>
-                <Header>
-                  <SearchForm />
-                </Header>
+                <Header />
                 <Nav />
                 <Container beers={beers} type={'beers'} />
               </>
@@ -57,9 +54,7 @@ export class App extends Component {
             render={() => (
               <>
                 <Nav />
-                <Header>
-                  <SearchForm />
-                </Header>
+                <Header />
                 <Container
                   beers={this.renderBeersFromList(bookmarks)}
                   type={'bookmarked'}
@@ -72,10 +67,8 @@ export class App extends Component {
             path='/beers/by_name'
             render={() => (
               <>
-                <Header>
-                  <SearchForm name={'name'} />
-                </Header>
-                {/* <Container beers={beers} type={'by_name'} /> */}
+                <Header />
+                <Container beers={beers} type={'by_name'} />
               </>
             )}
           />
@@ -88,9 +81,7 @@ export class App extends Component {
               );
               return (
                 <>
-                  <Header>
-                    <SearchForm />
-                  </Header>
+                  <Header />
                   <BeerPage beerDetails={beerDetails} />
                 </>
               );

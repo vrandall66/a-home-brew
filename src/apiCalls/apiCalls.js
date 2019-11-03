@@ -99,3 +99,24 @@ export const getBeerByYeast = async yeast => {
   const data = await response.json();
   return data;
 };
+
+export const getAllBeers = async (beers, pageNum) => {
+  const response = await fetch(`${baseUrl}?page=${pageNum}&per_page=80`);
+  if (!response.ok) {
+    throw new Error('Could not retrieve beers, please explore with us later.');
+  }
+  const data = await response.json();
+  if (!data.length) {
+    return beers;
+  }
+  beers = [...beers, ...data];
+  return getAllBeers(beers, pageNum + 1);
+};
+
+// drawbacks?
+// if tons and tons and tons of beer data
+// Doing a call of everything in one go,
+// Instead of querying exactly what I need
+// But in my case, I knew the limit
+// Several hundreds, not thousands/millions
+// To set up my filter functions
