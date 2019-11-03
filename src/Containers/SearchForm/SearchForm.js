@@ -84,11 +84,32 @@ export class SearchForm extends Component {
     return await setSearchResults(data);
   };
 
+  generateSearchResultText = () => {
+    const { searchTerm, hops, malt, yeast } = this.state;
+    let termSearch = searchTerm;
+    let hopsSearch = hops;
+    let maltSearch = malt;
+    let yeastSearch = yeast;
+
+    let searchResultText = (
+      <h5>
+        You searched for: {termSearch && termSearch} {hopsSearch && hopsSearch}{' '}
+        {maltSearch && maltSearch} {yeastSearch && yeastSearch}
+      </h5>
+    );
+    return searchResultText;
+  };
+
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = () => {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.handleClick();
+  };
+
+  handleClick = () => {
     const { history } = this.props;
     const { hops, malt, yeast, searchTerm } = this.state;
     if (hops || malt || yeast) {
@@ -98,7 +119,7 @@ export class SearchForm extends Component {
       this.searchBySearchTerm();
     }
     // this.clearInputs();
-    return history.push("/search");
+    return history.push('/search');
   };
 
   clearInputs = () => {
@@ -112,63 +133,66 @@ export class SearchForm extends Component {
 
   render() {
     return (
-      <form className='SearchForm'>
-        <input
-          name='searchTerm'
-          value={this.state.searchTerm}
-          onChange={this.handleChange}
-          placeholder='Search by name or description'
-          className='SearchForm__input--search-term'
-        ></input>
-        <label htmlFor='hops'>Hops:</label>
-        <select
-          id='hops'
-          onChange={e => this.setState({ hops: e.target.value })}
-          value={this.state.hops ? this.state.hops : 'All'}
-        >
-          <option value=''>All</option>
-          {this.getHopsOptions().map((hops, index) => {
-            return (
-              <option value={hops} key={index}>
-                {hops}
-              </option>
-            );
-          })}
-        </select>
-        <label htmlFor='malt'>Malt:</label>
-        <select
-          id='malt'
-          onChange={e => this.setState({ malt: e.target.value })}
-          value={this.state.malt ? this.state.malt : 'All'}
-        >
-          <option value=''>All</option>
-          {this.getMaltOptions().map((malt, index) => {
-            return (
-              <option value={malt} key={index}>
-                {malt}
-              </option>
-            );
-          })}
-        </select>
-        <label htmlFor='yeast'>Yeast:</label>
-        <select
-          id='yeast'
-          onChange={e => this.setState({ yeast: e.target.value })}
-          value={this.state.yeast ? this.state.yeast : 'All'}
-        >
-          <option value=''>All</option>
-          {this.getYeastOptions().map((yeast, index) => {
-            return (
-              <option value={yeast} key={index}>
-                {yeast}
-              </option>
-            );
-          })}
-        </select>
-        <button type='button' onClick={this.handleSubmit}>
-          Search
-        </button>
-      </form>
+      <>
+        <form className='SearchForm' onSubmit={e => this.handleSubmit(e)}>
+          <input
+            name='searchTerm'
+            value={this.state.searchTerm}
+            onChange={this.handleChange}
+            placeholder='Search by name or description'
+            className='SearchForm__input--search-term'
+          ></input>
+          <label htmlFor='hops'>Hops:</label>
+          <select
+            id='hops'
+            onChange={e => this.setState({ hops: e.target.value })}
+            value={this.state.hops ? this.state.hops : 'All'}
+          >
+            <option value=''>All</option>
+            {this.getHopsOptions().map((hops, index) => {
+              return (
+                <option value={hops} key={index}>
+                  {hops}
+                </option>
+              );
+            })}
+          </select>
+          <label htmlFor='malt'>Malt:</label>
+          <select
+            id='malt'
+            onChange={e => this.setState({ malt: e.target.value })}
+            value={this.state.malt ? this.state.malt : 'All'}
+          >
+            <option value=''>All</option>
+            {this.getMaltOptions().map((malt, index) => {
+              return (
+                <option value={malt} key={index}>
+                  {malt}
+                </option>
+              );
+            })}
+          </select>
+          <label htmlFor='yeast'>Yeast:</label>
+          <select
+            id='yeast'
+            onChange={e => this.setState({ yeast: e.target.value })}
+            value={this.state.yeast ? this.state.yeast : 'All'}
+          >
+            <option value=''>All</option>
+            {this.getYeastOptions().map((yeast, index) => {
+              return (
+                <option value={yeast} key={index}>
+                  {yeast}
+                </option>
+              );
+            })}
+          </select>
+          <button type='button' onClick={this.handleClick}>
+            Search
+          </button>
+        </form>
+        {this.generateSearchResultText()}
+      </>
     );
   }
 }
@@ -182,7 +206,9 @@ export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ setSearchResults }, dispatch);
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchForm));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchForm)
+);
