@@ -1,5 +1,6 @@
 import React from 'react';
 import Accordion from '../Accordion/Accordion';
+import ParentAccordion from '../ParentAccordion/ParentAccordion';
 import './BeerPage.scss';
 
 export const BeerPage = ({ beerDetails }) => {
@@ -12,21 +13,17 @@ export const BeerPage = ({ beerDetails }) => {
     ]
   }));
 
-    const hopAccordions = newHopStructure.map(hop => {
-      return <Accordion title={hop.title} items={hop.listItems} />
-    })
+  const hopAccordions = newHopStructure.map((hop, index) => {
+    return <Accordion title={hop.title} items={hop.listItems} key={index} />;
+  });
 
-  const allMalts = beerDetails.ingredients.malt.map((malt, index) => {
-    return (
-      <ul key={index}>
-        {malt.name}
-        <ul>
-          <li>
-            {malt.amount.value} {malt.amount.unit}
-          </li>
-        </ul>
-      </ul>
-    );
+  const newMaltStructure = beerDetails.ingredients.malt.map(malt => ({
+    title: malt.name,
+    listItems: [`${malt.amount.value} ${malt.amount.unit}`]
+  }));
+
+  const maltAccordions = newMaltStructure.map((malt, index) => {
+    return <Accordion title={malt.title} items={malt.listItems} key={index} />;
   });
 
   const allFoods = beerDetails.food_pairing.map((meal, index) => {
@@ -40,73 +37,6 @@ export const BeerPage = ({ beerDetails }) => {
       </li>
     );
   });
-
-  // const checkForBeer = () => {
-  //   return beerDetails.name ? (
-  //     <>
-  //       <section className='BeerPage__section--stats'>
-  //         <ul>
-  //           <li>ABV: {beerDetails.abv}</li>
-  //           <li>Attenuation Level: {beerDetails.attenuation_level}</li>
-  //           <li>
-  //             Boil volume: {beerDetails.boil_volume.value}{' '}
-  //             {beerDetails.boil_volume.unit}
-  //           </li>
-  //           <li>EBC: {beerDetails.ebc}</li>
-  //           <li>IBU: {beerDetails.ibu}</li>
-  //           <li>PH: {beerDetails.ph}</li>
-  //           <li>SRM: {beerDetails.srm}</li>
-  //           <li>Target FG: {beerDetails.target_fg}</li>
-  //           <li>Target OG: {beerDetails.target_og}</li>
-  //         </ul>
-  //       </section>
-  //       <aside className='BeerPage__aside--ingredients'>
-  //         <h4>Ingredients</h4>
-  //         <ul>
-  //           <h3>Hops</h3>
-  //           {allHops}
-  //         </ul>
-  //         <ul>
-  //           <h3>Malts</h3>
-  //           {allMalts}
-  //         </ul>
-  //         <p>{beerDetails.ingredients.yeast}</p>
-  //       </aside>
-  //       <section className='BeerPage__section--header'>
-  //         <h2 className='BeerPage__h2--beerName'>{beerDetails.name}</h2>
-  //         <h3>{beerDetails.tagline}</h3>
-  //       </section>
-  //       <section>
-  //         <div className='BeerPage__div--description'>
-  //           <h5>Description</h5>
-  //           <p>{beerDetails.description}</p>
-  //         </div>
-  //         <div className='BeerPage__div--brewersTips'>
-  //           <h5>Brewer's Tips</h5>
-  //           <p>{beerDetails.brewers_tips}</p>
-  //         </div>
-  //         <div className='BeerPage__div--pairsWith'>
-  //           <h4>Pairs well with:</h4>
-  //           <ul>{allFoods}</ul>
-  //         </div>
-  //       </section>
-  //       <section>
-  //         <h5>
-  //           Total volume this makes: {beerDetails.volume.value}{' '}
-  //           {beerDetails.volume.unit}
-  //         </h5>
-  //         <h5>Mash temperature</h5>
-  //         <ul>{mash_temp}</ul>
-  //         <h5>
-  //           Fermentation: {beerDetails.method.fermentation.temp.value}{' '}
-  //           {beerDetails.method.fermentation.temp.unit}
-  //         </h5>
-  //       </section>
-  //     </>
-  //   ) : (
-  //     <h2>There are no results yet.</h2>
-  //   );
-  // };
 
   return (
     <div className='BeerPage' key={beerDetails.id}>
@@ -128,17 +58,17 @@ export const BeerPage = ({ beerDetails }) => {
       </section>
       <aside className='BeerPage__aside--ingredients'>
         <h4>Ingredients</h4>
-        {/* <Accordion beerDetails={beerDetails}> */}
-        <ul>
-          <h3>Hops</h3>
-          {hopAccordions}
-        </ul>
-        <ul>
-          <h3>Malts</h3>
-          {allMalts}
-        </ul>
+        <ParentAccordion
+          title={'Hops'}
+          accordions={hopAccordions}
+          key={'hops'}
+        />
+        <ParentAccordion
+          title={'Malts'}
+          accordions={maltAccordions}
+          key={'malts'}
+        />
         <p>{beerDetails.ingredients.yeast}</p>
-        {/* </Accordion> */}
       </aside>
       <section className='BeerPage__section--header'>
         <h2 className='BeerPage__h2--beerName'>{beerDetails.name}</h2>

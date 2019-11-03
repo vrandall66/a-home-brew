@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Accordion.scss';
+import './ParentAccordion.scss';
 
-export class Accordion extends Component {
+export class ParentAccordion extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,9 +14,9 @@ export class Accordion extends Component {
   };
 
   render() {
-    const { title, items } = this.props;
-    const listItems = items.map((item, index) => {
-      return <li key={index}>{item}</li>;
+    const { title, accordions } = this.props;
+    const ingredients = accordions.map((accordion, index) => {
+      return <li key={index}>{accordion}</li>;
     });
     return (
       <div className='Accordion__section'>
@@ -25,7 +25,7 @@ export class Accordion extends Component {
         </button>
         {this.state.isExpanded && (
           <div className='Accordion__content'>
-            <ul>{listItems}</ul>
+            <ul>{ingredients}</ul>
           </div>
         )}
       </div>
@@ -33,4 +33,4 @@ export class Accordion extends Component {
   }
 }
 
-export default Accordion;
+export default ParentAccordion;
