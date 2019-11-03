@@ -1,8 +1,8 @@
-export const previousBrews = (state = [], action) => {
+export const currentBrews = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_PREVIOUS_BREW':
+    case 'SET_CURRENT_BREW':
       return [...state, action.beer];
-    case 'REMOVE_PREVIOUS_BREW':
+    case 'REMOVE_CURRENT_BREW':
       return state.filter(brew => action.beer.id !== brew.id);
     default:
       return state;

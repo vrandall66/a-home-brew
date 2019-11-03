@@ -23,32 +23,17 @@ export const setBookmark = beer => ({
   beer
 });
 
-export const toggleBookmark = beer => ({
-  type: 'TOGGLE_BOOKMARK',
-  beer
-});
-
 export const removeBookmark = beer => ({
   type: 'REMOVE_BOOKMARK',
   beer
 });
 
-export const addCurrentlyBrewing = beer => ({
-  type: 'ADD_CURRENTLY_BREWING',
-  beer
-});
+// export const addCurrentlyBrewing = beer => ({
+//   type: 'ADD_CURRENTLY_BREWING',
+//   beer
+// });
 
-export const addPreviousBrew = beer => ({
-  type: 'ADD_PREVIOUS_BREW',
-  beer
-});
-
-export const togglePreviousBrew = beer => ({
-  type: 'TOGGLE_PREVIOUS_BREW',
-  beer
-});
-
-export const removePreviousBrew = beer => ({
-  type: 'REMOVE_PREVIOUS_BREW',
-  beer
-});
+// export const addPreviousBrew = beer => ({
+//   type: 'ADD_PREVIOUS_BREW',
+//   beer
+// });

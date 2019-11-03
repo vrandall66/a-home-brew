@@ -63,10 +63,7 @@ export class App extends Component {
         method,
         ingredients,
         food_pairing,
-        brewers_tips,
-        bookmarked: false,
-        current: false,
-        previous: false
+        brewers_tips
       };
     });
     return this.markBookmarks(newBeerData);
@@ -106,7 +103,9 @@ export class App extends Component {
         <Route
           exact
           path='/bookmarked'
-          render={() => <Container beers={bookmarks} type={'bookmarks'} />}
+          render={() => (
+            <Container beers={beers} list={bookmarks} type={'bookmarks'} />
+          )}
         />
         <Route
           exact
