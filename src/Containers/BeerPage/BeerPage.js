@@ -54,6 +54,16 @@ export const BeerPage = ({ beerDetails }) => {
           <li>SRM: {beerDetails.srm}</li>
           <li>Target FG: {beerDetails.target_fg}</li>
           <li>Target OG: {beerDetails.target_og}</li>
+          <li>
+            Fermentation: {beerDetails.method.fermentation.temp.value}{' '}
+            {beerDetails.method.fermentation.temp.unit}
+          </li>
+          <li>
+            Total volume this makes: {beerDetails.volume.value}{' '}
+            {beerDetails.volume.unit}
+          </li>
+          <li>Mash temperature:</li>
+          <ul>{mash_temp}</ul>
         </ul>
       </section>
       <aside className='BeerPage__aside--ingredients'>
@@ -62,11 +72,13 @@ export const BeerPage = ({ beerDetails }) => {
           title={'Hops'}
           accordions={hopAccordions}
           key={'hops'}
+          className="BeerPage__ParentAccordion--ingredients"
         />
         <ParentAccordion
           title={'Malts'}
           accordions={maltAccordions}
           key={'malts'}
+          className="BeerPage__ParentAccordion--ingredients"
         />
         <p>{beerDetails.ingredients.yeast}</p>
       </aside>
@@ -74,7 +86,7 @@ export const BeerPage = ({ beerDetails }) => {
         <h2 className='BeerPage__h2--beerName'>{beerDetails.name}</h2>
         <h3>{beerDetails.tagline}</h3>
       </section>
-      <section>
+      <section className="BeerPage__section--description">
         <div className='BeerPage__div--description'>
           <h5>Description</h5>
           <p>{beerDetails.description}</p>
@@ -87,18 +99,6 @@ export const BeerPage = ({ beerDetails }) => {
           <h4>Pairs well with:</h4>
           <ul>{allFoods}</ul>
         </div>
-      </section>
-      <section>
-        <h5>
-          Total volume this makes: {beerDetails.volume.value}{' '}
-          {beerDetails.volume.unit}
-        </h5>
-        <h5>Mash temperature</h5>
-        <ul>{mash_temp}</ul>
-        <h5>
-          Fermentation: {beerDetails.method.fermentation.temp.value}{' '}
-          {beerDetails.method.fermentation.temp.unit}
-        </h5>
       </section>
     </div>
   );

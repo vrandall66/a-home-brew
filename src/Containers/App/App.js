@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Nav } from '../Nav/Nav';
 import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
@@ -37,49 +37,66 @@ export class App extends Component {
     const { beers, bookmarks, getBeersByName } = this.props;
     return (
       <div className='App'>
-        <Header />
-        <Route
-          exact
-          path='/'
-          render={() => (
-            <>
-              <Nav>
-                <SearchForm />
-              </Nav>
-              <Container beers={beers} type={'beers'} />
-            </>
-          )}
-        />
-        <Route
-          exact
-          path='/bookmarked'
-          render={() => (
-            <Container
-              beers={this.renderBeersFromList(bookmarks)}
-              type={'bookmarked'}
-            />
-          )}
-        />
-        <Route
-          exact
-          path='/(beers|bookmarked)/:id'
-          render={({ match }) => {
-            const beerDetails = beers.find(
-              beer => beer.id === parseInt(match.params.id)
-            );
-            return <BeerPage beerDetails={beerDetails} />;
-          }}
-        />
-        <Route
-          exact
-          path='/beers/by_name'
-          render={() => (
-            <>
-              <SearchForm name={'name'} />
-              <Container beers={beers} type={'by_name'} />
-            </>
-          )}
-        />
+        <Switch>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <>
+                <Header>
+                  <SearchForm />
+                </Header>
+                <Nav />
+                <Container beers={beers} type={'beers'} />
+              </>
+            )}
+          />
+          <Route
+            exact
+            path='/bookmarked'
+            render={() => (
+              <>
+                <Nav />
+                <Header>
+                  <SearchForm />
+                </Header>
+                <Container
+                  beers={this.renderBeersFromList(bookmarks)}
+                  type={'bookmarked'}
+                />
+              </>
+            )}
+          />
+          <Route
+            exact
+            path='/beers/by_name'
+            render={() => (
+              <>
+                <Header>
+                  <SearchForm name={'name'} />
+                </Header>
+                {/* <Container beers={beers} type={'by_name'} /> */}
+              </>
+            )}
+          />
+          <Route
+            exact
+            path='/(beers|bookmarked)/:id'
+            render={({ match }) => {
+              const beerDetails = beers.find(
+                beer => beer.id === parseInt(match.params.id)
+              );
+              return (
+                <>
+                  <Header>
+                    <SearchForm />
+                  </Header>
+                  <BeerPage beerDetails={beerDetails} />
+                </>
+              );
+            }}
+          />
+        </Switch>
       </div>
     );
   }
