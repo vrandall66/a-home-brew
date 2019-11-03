@@ -3,34 +3,35 @@ import { connect } from 'react-redux';
 import BeerCard from '../BeerCard/BeerCard';
 import './Container.scss';
 
-export const Container = ({ beers, type, list }) => {
-  // if list.length is true:
-  // invoke beersToRender
-  // else, render beers from store
-  //
-
-  const beersToRender = () => {
-    return beers.reduce((markedBeers, beer) => {
-        if (list.includes(beer.id)) {
-          markedBeers.push(beer)
-        }
-        return markedBeers;
-      }, []);
+export const Container = ({ beers, list, type }) => {
+  console.log(beers);
+  const renderBeersFromList = () => {
+    let renderable = beers.reduce((markedBeers, beer) => {
+      if (list.includes(beer.id)) {
+        markedBeers.push(beer);
+      }
+      return markedBeers;
+    }, []);
+    renderable.map(beer => {
+      return <BeerCard key={beer.id} beer={beer} type={type} />;
+    });
   };
 
-  // (reduce beers to only include beers on the list) : (beers)
+  const renderBeersFromStore = () => {
+    return beers.map(beer => {
+      return <BeerCard key={beer.id} beer={beer} type={'beers'} />;
+    });
+  };
 
-  // CHANGE to iterating through
-  const listLength = list.length ? (
-    // CHANGE BEERS TO beersToRender
-    beers.map(beer => {
-      return <BeerCard key={beer.id} beer={beer} type={type} />;
-    })
-  ) : (
-    <div>{`There are no ${type}!`}</div>
+  return (
+    <div className='Container'>
+      {beers
+        ? list.length
+          ? renderBeersFromList()
+          : renderBeersFromStore()
+        : null}
+    </div>
   );
-
-  return <div className='Container'>{beersLength}</div>;
 };
 
 export const mapStateToProps = ({ beers }) => ({

@@ -8,14 +8,6 @@ import { removeBookmark, setBookmark } from '../../actions';
 import './BeerCard.scss';
 
 export class BeerCard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      bookmarked: false,
-      previous: false,
-      current: false
-    };
-  }
   handleSaveClick = list => {
     const { id } = this.props.beer;
     switch (list) {
