@@ -28,31 +28,15 @@ export class App extends Component {
       <div className='App'>
         <Nav />
         <Header />
-        {beers ? (
+        {/* {beers ? ( */}
           <>
+            <Route exact path='/' render={() => <Container beers={beers} type={'beers'} />} />
             <Route
-              exact
-              path='/'
-              render={() => <Container />}
+              exact path='/bookmarked'
+              render={() => <Container beers={bookmarks} type={'bookmarked'} />}
             />
             <Route
-              exact
-              path='/beers/by_name'
-              render={() => (
-                <>
-                  <SearchForm getBeersByType={getBeersByName} />
-                  <Container list={[]} type={'by_name'} />
-                </>
-              )}
-            />
-            <Route
-              exact
-              path='/bookmarked'
-              render={() => <Container list={bookmarks} type={'bookmarks'} />}
-            />
-            <Route
-              exact
-              path='/beers/:id'
+              exact path='/beers/:id'
               render={({ match }) => {
                 const beerDetails = beers.find(
                   beer => beer.id === parseInt(match.params.id)
@@ -61,9 +45,9 @@ export class App extends Component {
               }}
             />
           </>
-        ) : (
+        {/* ) : (
           null
-        )}
+        )} */}
       </div>
     );
   };
