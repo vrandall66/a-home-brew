@@ -17,7 +17,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,9 +39,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
-    "eslint": "^6.6.0",
-    "eslint-plugin-react": "^7.16.0",
-    "lint": "eslint src/"
+    "eslint-plugin-react": "^7.16.0"
   },
   "jest": {
     "snapshotSerializers": [
