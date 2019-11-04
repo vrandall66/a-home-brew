@@ -20,6 +20,12 @@ export const Container = ({ beers, type }) => {
           {displayBeers}
         </div>
       );
+    case 'previously_brewed':
+      return (
+        <div className='Container' key={'previously_brewed'}>
+          {displayBeers}
+        </div>
+      );
     case 'search_results':
       return (
         <div className='Container' key={'search_results'}>

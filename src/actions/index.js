@@ -38,7 +38,12 @@ export const removeBookmark = beer => ({
 //   beer
 // });
 
-// export const addPreviousBrew = beer => ({
-//   type: 'ADD_PREVIOUS_BREW',
-//   beer
-// });
+export const setPreviousBrew = beer => ({
+  type: 'SET_PREVIOUS_BREW',
+  beer
+});
+
+export const removePreviousBrew = beer => ({
+  type: 'REMOVE_PREVIOUS_BREW',
+  beer
+});

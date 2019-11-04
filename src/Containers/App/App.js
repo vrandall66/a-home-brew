@@ -33,7 +33,7 @@ export class App extends Component {
   };
 
   render() {
-    const { beers, bookmarks, searchResults } = this.props;
+    const { beers, bookmarks, previousBrews, searchResults } = this.props;
     return (
       <div className='App'>
         <Switch>
@@ -64,7 +64,21 @@ export class App extends Component {
           />
           <Route
             exact
-            path='/(beers|bookmarked|search)/:id'
+            path='/previous_brews'
+            render={() => (
+              <>
+                <Header />
+                <Nav />
+                <Container
+                  beers={this.renderBeersFromList(previousBrews)}
+                  type={'previously_brewed'}
+                />
+              </>
+            )}
+          />
+          <Route
+            exact
+            path='/(beers|bookmarked|previous_brews|search)/:id'
             render={({ match }) => {
               const beerDetails = beers.find(
                 beer => beer.id === parseInt(match.params.id)
@@ -97,13 +111,13 @@ export class App extends Component {
 export const mapStateToProps = ({
   beers,
   bookmarks,
-  searchResults,
-  previousBrews
+  previousBrews,
+  searchResults
 }) => ({
   beers,
   bookmarks,
-  searchResults,
-  previousBrews
+  previousBrews,
+  searchResults
 });
 
 export const mapDispatchToProps = dispatch => {

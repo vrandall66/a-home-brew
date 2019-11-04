@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { FaRegBookmark } from 'react-icons/fa';
-// import { IoIosBeer } from 'react-icons/io';
-import { removeBookmark, setBookmark } from '../../actions';
+import { IoIosBeer } from 'react-icons/io';
+import {
+  removeBookmark,
+  setBookmark,
+  setPreviousBrew,
+  removePreviousBrew
+} from '../../actions';
 import './BeerCard.scss';
 
 export class BeerCard extends Component {
@@ -14,9 +19,9 @@ export class BeerCard extends Component {
       case 'bookmark':
         this.toggleBookmark(id);
         break;
-      // case 'previous':
-      //   togglePreviousBrew(id);
-      //   break;
+      case 'previous':
+        this.togglePreviousBrew(id);
+        break;
       // case 'current':
       //   toggleCurrentBrew(id);
       //   break;
@@ -34,14 +39,23 @@ export class BeerCard extends Component {
     }
   };
 
+  togglePreviousBrew = id => {
+    const { previousBrews, setPreviousBrew, removePreviousBrew } = this.props;
+    if (previousBrews.includes(id)) {
+      removePreviousBrew(id);
+    } else {
+      setPreviousBrew(id);
+    }
+  };
+
   render() {
     const { beer, type } = this.props;
     return (
       <div className='BeerCard' key={beer.id}>
         <header className='BeerCard__header'>
           <FaRegBookmark onClick={() => this.handleSaveClick('bookmark')} />
-          {/* <IoIosBeer onClick={() => this.handleSaveClick('previous')} />
-          <input
+          <IoIosBeer onClick={() => this.handleSaveClick('previous')} />
+          {/* <input
             type='image'
             src='images/Current.png'
             onClick={() => this.handleSaveClick('current')}
@@ -59,16 +73,19 @@ export class BeerCard extends Component {
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks }) => ({
+export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
   beers,
-  bookmarks
+  bookmarks,
+  previousBrews
 });
 
 export const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setBookmark,
-      removeBookmark
+      removeBookmark,
+      setPreviousBrew,
+      removePreviousBrew
     },
     dispatch
   );

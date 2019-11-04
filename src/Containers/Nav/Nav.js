@@ -14,10 +14,10 @@ export const Nav = () => {
           <li className='Nav__li Nav__li--currently-brewing'>
             Currently Brewing
           </li>
-        </Link>
+        </Link> */}
         <Link to='/previous_brews'>
           <li className='Nav__li Nav__li--previous-brews'>Previous Brews</li>
-        </Link> */}
+        </Link>
       </ul>
     </div>
   );
