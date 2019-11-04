@@ -6,7 +6,7 @@ import {
   setPreviousBrew,
   removePreviousBrew
 } from '../../apiCalls/apiCalls';
-import BeerCard, { mapStateToProps, mapDispatchToProps } from './BeerCard.js';
+import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard.js';
 
 jest.mock('../../apiCalls/apiCalls');
 

@@ -8,11 +8,6 @@ export const setSearchResults = beers => ({
   beers
 });
 
-export const addProperties = beers => ({
-  type: 'ADD_PROPERTIES',
-  beers
-});
-
 export const setLoading = bool => ({
   type: 'IS_LOADING',
   bool
