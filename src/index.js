@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import rootReducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import './index.css';
-import App from './Containers/App/App';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { loadState, saveState } from './localStorage';
+import App from './Containers/App/App';
+import rootReducer from './reducers';
+import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, loadState(), composeWithDevTools());

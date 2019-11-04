@@ -3,7 +3,7 @@
 exports[`Container should match the snapshot 1`] = `
 <div
   className="Container"
-  key="previously_brewed"
+  key="beers"
 >
   <Connect(BeerCard)
     beer={
@@ -14,7 +14,7 @@ exports[`Container should match the snapshot 1`] = `
     bookmark={true}
     key="1"
     previous={false}
-    type="previously_brewed"
+    type="bookmarks"
   />
   <Connect(BeerCard)
     beer={
@@ -25,7 +25,7 @@ exports[`Container should match the snapshot 1`] = `
     bookmark={true}
     key="2"
     previous={false}
-    type="previously_brewed"
+    type="bookmarks"
   />
   <Connect(BeerCard)
     beer={
@@ -33,10 +33,43 @@ exports[`Container should match the snapshot 1`] = `
         "id": 3,
       }
     }
-    bookmark={true}
+    bookmark={false}
     key="3"
     previous={false}
-    type="previously_brewed"
+    type="bookmarks"
+  />
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 4,
+      }
+    }
+    bookmark={false}
+    key="4"
+    previous={true}
+    type="bookmarks"
+  />
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 5,
+      }
+    }
+    bookmark={false}
+    key="5"
+    previous={true}
+    type="bookmarks"
+  />
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 6,
+      }
+    }
+    bookmark={false}
+    key="6"
+    previous={true}
+    type="bookmarks"
   />
 </div>
 `;
