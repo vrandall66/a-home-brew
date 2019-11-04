@@ -20,18 +20,42 @@ exports[`SearchForm should match the snapshot 1`] = `
         Hops:
       </label>
       <select
+        classNamePrefix="list"
         id="hops"
+        name="hops"
         onChange={[Function]}
         value="All"
       >
         <option
+          id="all-hops"
           value=""
         >
           All
         </option>
         <option
           key="0"
-        />
+          value="Amarillo"
+        >
+          Amarillo
+        </option>
+        <option
+          key="1"
+          value="First Gold"
+        >
+          First Gold
+        </option>
+        <option
+          key="2"
+          value="Fuggles"
+        >
+          Fuggles
+        </option>
+        <option
+          key="3"
+          value="Simcoe"
+        >
+          Simcoe
+        </option>
       </select>
     </section>
     <section>
@@ -52,7 +76,34 @@ exports[`SearchForm should match the snapshot 1`] = `
         </option>
         <option
           key="0"
-        />
+          value="Amber"
+        >
+          Amber
+        </option>
+        <option
+          key="1"
+          value="Brown"
+        >
+          Brown
+        </option>
+        <option
+          key="2"
+          value="Caramalt"
+        >
+          Caramalt
+        </option>
+        <option
+          key="3"
+          value="Flaked Oats"
+        >
+          Flaked Oats
+        </option>
+        <option
+          key="4"
+          value="Wheat"
+        >
+          Wheat
+        </option>
       </select>
     </section>
     <section>

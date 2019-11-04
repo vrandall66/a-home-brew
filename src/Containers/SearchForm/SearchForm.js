@@ -146,11 +146,13 @@ export class SearchForm extends Component {
           <section>
             <label htmlFor='hops'>Hops:</label>
             <select
+              classNamePrefix='list'
               id='hops'
+              name='hops'
               onChange={e => this.setState({ hops: e.target.value })}
               value={this.state.hops ? this.state.hops : 'All'}
             >
-              <option value=''>All</option>
+              <option value='' id='all-hops' >All</option>
               {this.getHopsOptions().map((hops, index) => {
                 return (
                   <option value={hops} key={index}>

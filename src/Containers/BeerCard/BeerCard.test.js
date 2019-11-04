@@ -6,8 +6,8 @@ import {
   setPreviousBrew,
   removePreviousBrew
 } from '../../apiCalls/apiCalls';
-import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard.js';
-
+import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard';
+console.log(BeerCard);
 jest.mock('../../apiCalls/apiCalls');
 
 describe('BeerCard', () => {
@@ -40,12 +40,19 @@ describe('BeerCard', () => {
     let type = 'bookmark';
     let bookmark = true;
     let previous = false;
-    wrapper = shallow(<BeerCard />);
+    wrapper = shallow(
+      <BeerCard
+        beer={beer}
+        type={type}
+        bookmark={bookmark}
+        previous={previous}
+      />
+    );
   });
 
-  it.skip('should match the snapshot', () => {
-    const wrapper2 = shallow(<BeerCard />);
-    expect(wrapper2).toMatchSnapshot();
+  it('should match the snapshot', () => {
+    const wrapper = shallow(<BeerCard />);
+    expect(wrapper).toMatchSnapshot();
   });
 
   it.skip('should call handleSaveClick onClick of bookmark icon', () => {
