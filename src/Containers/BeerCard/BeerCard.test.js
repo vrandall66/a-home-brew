@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 import {
   setBookmark,
@@ -7,7 +7,6 @@ import {
   removePreviousBrew
 } from '../../apiCalls/apiCalls';
 import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard';
-console.log(BeerCard);
 jest.mock('../../apiCalls/apiCalls');
 
 describe('BeerCard', () => {
@@ -37,11 +36,13 @@ describe('BeerCard', () => {
         'The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.',
       contributed_by: 'Sam Mason <samjbmason>'
     };
+    let id = 1;
     let type = 'bookmark';
     let bookmark = true;
     let previous = false;
     wrapper = shallow(
       <BeerCard
+        key={beer.id}
         beer={beer}
         type={type}
         bookmark={bookmark}
