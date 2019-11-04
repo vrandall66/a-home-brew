@@ -1,10 +1,17 @@
 import React from 'react';
 import BeerCard from '../BeerCard/BeerCard';
+import { connect } from 'react-redux';
 import './Container.scss';
 
-export const Container = ({ beers, type }) => {
+export const Container = ({ beers, type, bookmarks }) => {
+  const getBookmarkStatus = (id) => {
+    let status = bookmarks.includes(id) ? true : false;
+    return status;
+  }
+
   const displayBeers = beers.map(beer => {
-    return <BeerCard key={beer.id} beer={beer} type={type} />;
+    let bookmark = getBookmarkStatus(beer.id)
+    return <BeerCard key={beer.id} beer={beer} type={type} bookmark={bookmark}/>;
   });
 
   switch (type) {
@@ -41,4 +48,9 @@ export const Container = ({ beers, type }) => {
   }
 };
 
-export default Container;
+export const mapStateToProps = ({ beers, bookmarks }) => ({
+  beers,
+  bookmarks
+});
+
+export default connect(mapStateToProps)(Container);

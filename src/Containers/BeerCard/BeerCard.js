@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-// import { FaBookmark } from 'react-icons/fa';
+import { FaBookmark } from 'react-icons/fa';
 import { FaRegBookmark } from 'react-icons/fa';
 import { IoIosBeer } from 'react-icons/io';
 import {
@@ -50,7 +50,7 @@ export class BeerCard extends Component {
   };
 
   render() {
-    const { beer, type } = this.props;
+    const { beer, type, bookmark } = this.props;
     // const { beer, type, bookmarks, previousBrews } = this.props;
     // const isBookmarked = bookmarks.map(id => id === parseInt(beer.id));
     // const bookmarkImg = isBookmarked ? <FaBookmark /> : <FaRegBookmark />;
@@ -59,7 +59,11 @@ export class BeerCard extends Component {
     return (
       <div className='BeerCard' key={beer.id}>
         <header className='BeerCard__header'>
-          <FaRegBookmark onClick={() => this.handleSaveClick('bookmark')} />
+          {bookmark ? (
+            <FaBookmark onClick={() => this.handleSaveClick('bookmark')} />
+          ) : (
+            <FaRegBookmark onClick={() => this.handleSaveClick('bookmark')} />
+          )}
           <IoIosBeer onClick={() => this.handleSaveClick('previous')} />
           {/* <input
             type='image'

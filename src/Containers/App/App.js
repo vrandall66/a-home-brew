@@ -44,7 +44,7 @@ export class App extends Component {
               <>
                 <Header />
                 <Nav />
-                <Container beers={beers} type={'beers'} />
+                <Container beers={beers} type={'beers'} bookmarks={bookmarks} />
               </>
             )}
           />
@@ -58,6 +58,7 @@ export class App extends Component {
                 <Container
                   beers={this.renderBeersFromList(bookmarks)}
                   type={'bookmarked'}
+                  bookmarks={bookmarks}
                 />
               </>
             )}
@@ -72,6 +73,7 @@ export class App extends Component {
                 <Container
                   beers={this.renderBeersFromList(previousBrews)}
                   type={'previously_brewed'}
+                  bookmarks={bookmarks}
                 />
               </>
             )}
@@ -98,7 +100,11 @@ export class App extends Component {
               <>
                 <Header />
                 <Nav />
-                <Container beers={searchResults} type={'search'} />
+                <Container
+                  beers={searchResults}
+                  type={'search'}
+                  bookmarks={bookmarks}
+                />
               </>
             )}
           />
