@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { IoIosArrowDropdown, IoIosArrowDropdownCircle } from 'react-icons/io';
 import './Accordion.scss';
 
 export class Accordion extends Component {
@@ -16,12 +17,21 @@ export class Accordion extends Component {
   render() {
     const { title, items } = this.props;
     const listItems = items.map((item, index) => {
-      return <li key={index}>{item}</li>;
+      return (
+        <li key={index} className='Accordion__text'>
+          {item}
+        </li>
+      );
     });
     return (
       <div className='Accordion__section'>
         <button className='Accordion' onClick={this.handleExpand}>
           <p className='Accordion__title'>{title}</p>
+          {this.state.isExpanded ? (
+            <IoIosArrowDropdownCircle className='Accordion__icon' />
+          ) : (
+            <IoIosArrowDropdown className='Accordion__icon' />
+          )}
         </button>
         {this.state.isExpanded && (
           <div className='Accordion__content'>

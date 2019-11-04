@@ -72,13 +72,13 @@ export const BeerPage = ({ beerDetails }) => {
           title={'Hops'}
           accordions={hopAccordions}
           key={'hops'}
-          className="BeerPage__ParentAccordion--ingredients"
+          className='BeerPage__ParentAccordion--ingredients'
         />
         <ParentAccordion
           title={'Malts'}
           accordions={maltAccordions}
           key={'malts'}
-          className="BeerPage__ParentAccordion--ingredients"
+          className='BeerPage__ParentAccordion--ingredients'
         />
         <p>{beerDetails.ingredients.yeast}</p>
       </aside>
@@ -86,7 +86,7 @@ export const BeerPage = ({ beerDetails }) => {
         <h2 className='BeerPage__h2--beerName'>{beerDetails.name}</h2>
         <h3>{beerDetails.tagline}</h3>
       </section>
-      <section className="BeerPage__section--description">
+      <section className='BeerPage__section--description'>
         <div className='BeerPage__div--description'>
           <h5>Description</h5>
           <p>{beerDetails.description}</p>
