@@ -1,36 +1,6 @@
 .BeerPage {
   display: flex;
   flex-direction: column;
-  // grid-template-areas:
-  //   'stats header header'
-  //   'stats description description'
-  //   'ingredients description description'
-  //   'ingredients description description';
   height: 100vh;
   width: 100vw;
-}
-
-.BeerPage__section--stats {
-  // display: grid;
-  // grid-area: stats;
-}
-
-.BeerPage__aside--ingredients {
-  // display: grid;
-  // grid-area: ingredients;
-}
-
-.BeerPage__ParentAccordion--ingredients {
-  // display: grid;
-  // grid-area: ingredients;
-}
-
-.BeerPage__section--header {
-  // display: grid;
-  // grid-area: header;
-}
-
-.BeerPage__section--description {
-  // display: grid;
-  // grid-area: description;
 }

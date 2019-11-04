@@ -3,9 +3,14 @@
 }
 
 .Container {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
   grid-area: container;
+  grid-gap: 15px 15px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: auto;
+  justify-items: center;
   justify-content: space-between;
   overflow: scroll;
+  padding: 20px 20px;
 }
