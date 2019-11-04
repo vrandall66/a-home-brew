@@ -4,9 +4,10 @@ import ParentAccordion from './ParentAccordion';
 
 describe('ParentAccordion', () => {
   let wrapper;
+  let accordions = [{}, {}, {}];
 
   beforeEach(() => {
-    wrapper = shallow(<ParentAccordion />);
+    wrapper = shallow(<ParentAccordion accordions={accordions} />);
   });
 
   it('should match the snapshot', () => {
