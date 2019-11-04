@@ -21,7 +21,7 @@
 
 ## Screenshots
 
-![View all bookmarked recipes on /bookmarks route!](./images/BookmarksRoute.gif)
+![View all bookmarked recipes on /bookmarks route!](./src/images/BookmarksRoute.gif)
 
 ## Features
 
