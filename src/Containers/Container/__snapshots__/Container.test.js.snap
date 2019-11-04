@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container should match the snapshot 1`] = `
+<div
+  className="Container"
+  key="previously_brewed"
+>
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 1,
+      }
+    }
+    bookmark={true}
+    key="1"
+    previous={false}
+    type="previously_brewed"
+  />
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 2,
+      }
+    }
+    bookmark={true}
+    key="2"
+    previous={false}
+    type="previously_brewed"
+  />
+  <Connect(BeerCard)
+    beer={
+      Object {
+        "id": 3,
+      }
+    }
+    bookmark={true}
+    key="3"
+    previous={false}
+    type="previously_brewed"
+  />
+</div>
+`;

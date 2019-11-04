@@ -15,13 +15,6 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "jam3"],
-  "rules": {
-    "jam3/no-sanitizer-with-danger": [
-      2,
-      {
-        "wrapperName": ["clean"]
-      }
-    ]
-  }
+  "plugins": ["react"],
+  "rules": {}
 }

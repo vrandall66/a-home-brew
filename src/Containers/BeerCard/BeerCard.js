@@ -49,6 +49,7 @@ export class BeerCard extends Component {
 
   render() {
     const { beer, type, bookmark, previous } = this.props;
+    console.log(beer)
     return (
       <div className='BeerCard' key={beer.id}>
         <header className='BeerCard__header'>
