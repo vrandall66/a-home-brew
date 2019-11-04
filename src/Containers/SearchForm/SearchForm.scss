@@ -6,7 +6,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 23vh;
+  height: 22vh;
   width: 100%;
 }
 
@@ -17,4 +17,22 @@
 
 .SearchForm__div--container {
   width: 50%;
+}
+
+.SearchForm__label {
+  margin-right: 2%;
+}
+
+.SearchForm__section--accordions {
+  width: 100%;
+}
+
+input,
+button {
+  margin: 1% 0%;
+  width: 62%;
+}
+
+select {
+  width: 52%;
 }

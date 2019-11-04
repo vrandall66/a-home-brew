@@ -1,11 +1,44 @@
 .Nav {
+  align-items: center;
+  background-color: #BAD9B5;
   display: flex;
   flex-direction: column;
   grid-area: nav;
-  height: 20vh;
+  height: 100vh;
+}
+
+.Nav__div--container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-evenly;
+}
+
+.Nav__div--header-container {
+  margin: 20% 0%;
+  padding-left: 1%;
 }
 
 .Nav__h1--title {
   margin-bottom: 20%;
   padding: 15% 0%;
+}
+
+.Nav__Link--home {
+  font-size: 300%;
+}
+
+.Nav__div--your-brewery {
+  align-items: space-between;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.Nav__ul--your-brewery {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  margin: 2% 0%;
 }

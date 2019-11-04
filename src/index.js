@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { loadState, saveState } from './localStorage';
 import App from './Containers/App/App';
 import rootReducer from './reducers';
-import './index.css';
+import './index.scss';
 import * as serviceWorker from './serviceWorker';
 
 const store = createStore(rootReducer, loadState(), composeWithDevTools());

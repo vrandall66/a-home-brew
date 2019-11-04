@@ -102,7 +102,8 @@ export const BeerPage = ({ beerDetails }) => {
               Total volume this makes: {beerDetails.volume.value}{' '}
               {beerDetails.volume.unit}
             </li>
-            <li>Mash temperature: {mash_temp}</li>
+            <li>Mash temperature:</li>
+            {mash_temp}
           </ul>
         </section>
       </div>

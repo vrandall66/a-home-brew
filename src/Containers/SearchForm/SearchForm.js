@@ -144,61 +144,69 @@ export class SearchForm extends Component {
               placeholder='Search by name or description'
               className='SearchForm__input--search-term'
             ></input>
-            <section>
-              <label htmlFor='hops'>Hops:</label>
-              <select
-                id='hops'
-                onChange={e => this.setState({ hops: e.target.value })}
-                value={this.state.hops ? this.state.hops : 'All'}
-                className='SearchForm__select'
-              >
-                <option value='' id='all-hops'>
-                  All
-                </option>
-                {this.getHopsOptions().map((hops, index) => {
-                  return (
-                    <option value={hops} key={index}>
-                      {hops}
-                    </option>
-                  );
-                })}
-              </select>
-            </section>
-            <section>
-              <label htmlFor='malt'>Malt:</label>
-              <select
-                id='malt'
-                onChange={e => this.setState({ malt: e.target.value })}
-                value={this.state.malt ? this.state.malt : 'All'}
-                className='SearchForm__select'
-              >
-                <option value=''>All</option>
-                {this.getMaltOptions().map((malt, index) => {
-                  return (
-                    <option value={malt} key={index}>
-                      {malt}
-                    </option>
-                  );
-                })}
-              </select>
-            </section>
-            <section>
-              <label htmlFor='yeast'>Yeast:</label>
-              <select
-                id='yeast'
-                onChange={e => this.setState({ yeast: e.target.value })}
-                value={this.state.yeast ? this.state.yeast : 'All'}
-                className='SearchForm__select'
-              >
-                <option value=''>All</option>
-                {this.getYeastOptions().map((yeast, index) => {
-                  return (
-                    <option value={yeast} key={index}>
-                      {yeast}
-                    </option>
-                  );
-                })}
-              </select>
+            <section className='SearchForm__section--select-container'>
+              <section>
+                <label htmlFor='hops' className='SearchForm__label'>
+                  Hops:{' '}
+                </label>
+                <select
+                  id='hops'
+                  onChange={e => this.setState({ hops: e.target.value })}
+                  value={this.state.hops ? this.state.hops : 'All'}
+                  className='SearchForm__select'
+                >
+                  <option value='' id='all-hops'>
+                    All
+                  </option>
+                  {this.getHopsOptions().map((hops, index) => {
+                    return (
+                      <option value={hops} key={index}>
+                        {hops}
+                      </option>
+                    );
+                  })}
+                </select>
+              </section>
+              <section>
+                <label htmlFor='malt' className='SearchForm__label'>
+                  Malt:{' '}
+                </label>
+                <select
+                  id='malt'
+                  onChange={e => this.setState({ malt: e.target.value })}
+                  value={this.state.malt ? this.state.malt : 'All'}
+                  className='SearchForm__select'
+                >
+                  <option value=''>All</option>
+                  {this.getMaltOptions().map((malt, index) => {
+                    return (
+                      <option value={malt} key={index}>
+                        {malt}
+                      </option>
+                    );
+                  })}
+                </select>
+              </section>
+              <section>
+                <label htmlFor='yeast' className='SearchForm__label'>
+                  Yeast:{' '}
+                </label>
+                <select
+                  id='yeast'
+                  onChange={e => this.setState({ yeast: e.target.value })}
+                  value={this.state.yeast ? this.state.yeast : 'All'}
+                  className='SearchForm__select'
+                >
+                  <option value=''>All</option>
+                  {this.getYeastOptions().map((yeast, index) => {
+                    return (
+                      <option value={yeast} key={index}>
+                        {yeast}
+                      </option>
+                    );
+                  })}
+                </select>
+              </section>
             </section>
             <button
               type='button'

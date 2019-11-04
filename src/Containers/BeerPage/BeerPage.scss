@@ -1,13 +1,13 @@
-* {
-  border: 1px solid pink;
-}
-
 .BeerPage {
+  background-color: #BAD9B5;
   display: flex;
   flex-direction: column;
-  height: 72vh;
-  margin-top: 4%;
-  width: 79vw;
+  height: 69vh;
+  margin: 0% 1.25%;
+  margin-top: 6%;
+  overflow: scroll;
+  padding: 2% 0% 4% 0%;
+  width: 78vw;
 }
 
 ul {
@@ -16,11 +16,6 @@ ul {
 
 .BeerPage__div--right {
   display: flex;
-  overflow: scroll;
-}
-
-.BeerPage__section--header {
-  margin: 1% 0%;
 }
 
 .BeerPage__section--description {
@@ -33,4 +28,18 @@ ul {
 .BeerPage__aside--ingredients {
   margin: 1%;
   padding: 1%;
+}
+
+.BeerPage__aside--ingredients {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  width: 100%;
+}
+
+.BeerPage__section--tips-pairs-with {
+  padding-right: 2%;
 }
