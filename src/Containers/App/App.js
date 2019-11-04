@@ -95,6 +95,7 @@ export class App extends Component {
               );
               return (
                 <>
+                  <Header />
                   <Nav />
                   <BeerPage beerDetails={beerDetails} />
                 </>

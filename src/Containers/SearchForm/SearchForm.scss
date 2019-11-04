@@ -1,4 +1,20 @@
+* {
+  text-align: center;
+}
+
 .SearchForm {
+  align-items: center;
   display: flex;
   flex-direction: column;
+  height: 23vh;
+  width: 100%;
+}
+
+.SearchForm__input--search-term,
+.SearchForm__button--search {
+  font-size: 100%;
+}
+
+.SearchForm__div--container {
+  width: 50%;
 }

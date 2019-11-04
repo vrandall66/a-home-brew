@@ -1,4 +1,11 @@
 .Nav {
+  display: flex;
+  flex-direction: column;
   grid-area: nav;
   height: 20vh;
+}
+
+.Nav__h1--title {
+  margin-bottom: 20%;
+  padding: 15% 0%;
 }

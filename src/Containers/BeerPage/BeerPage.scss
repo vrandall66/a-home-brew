@@ -1,6 +1,36 @@
+* {
+  border: 1px solid pink;
+}
+
 .BeerPage {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 80vw;
+  height: 72vh;
+  margin-top: 4%;
+  width: 79vw;
+}
+
+ul {
+  list-style: none;
+}
+
+.BeerPage__div--right {
+  display: flex;
+  overflow: scroll;
+}
+
+.BeerPage__section--header {
+  margin: 1% 0%;
+}
+
+.BeerPage__section--description {
+  display: flex;
+}
+
+.BeerPage__div--description,
+.BeerPage__div--brewersTips,
+.BeerPage__div--pairsWith,
+.BeerPage__aside--ingredients {
+  margin: 1%;
+  padding: 1%;
 }
