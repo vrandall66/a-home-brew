@@ -1,14 +1,5 @@
 const baseUrl = 'https://api.punkapi.com/v2/beers';
 
-export const getExampleBeers = async () => {
-  const response = await fetch('https://api.punkapi.com/v2/beers');
-  if (!response.ok) {
-    throw new Error('Could not retrieve beers, please drink with us later.');
-  }
-  const data = await response.json();
-  return data;
-};
-
 export const getBeerByName = async name => {
   const response = await fetch(`${baseUrl}?beer_name=${name}`);
   if (!response.ok) {

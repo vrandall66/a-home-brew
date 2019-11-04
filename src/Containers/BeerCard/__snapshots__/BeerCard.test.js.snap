@@ -1,3 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BeerCard should match the snapshot 1`] = `undefined`;
+exports[`BeerCard should match the snapshot 1`] = `
+<div
+  className="BeerCard"
+  key="1"
+>
+  <header
+    className="BeerCard__header"
+  >
+    <FaBookmark
+      onClick={[Function]}
+    />
+    <FaPlus
+      onClick={[Function]}
+    />
+  </header>
+  <h4
+    className="BeerCard__h4--name"
+  >
+    Buzz
+  </h4>
+  <p
+    className="BeerCard__p--tagline"
+  >
+    A Real Bitter Experience.
+  </p>
+  <Link
+    to="/bookmark/1"
+  >
+    <button
+      className="BeerCard__button--readMore"
+      type="button"
+    >
+      Read More
+    </button>
+  </Link>
+</div>
+`;

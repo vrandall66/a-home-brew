@@ -22,9 +22,6 @@ export class BeerCard extends Component {
       case 'previous':
         this.togglePreviousBrew(id);
         break;
-      // case 'current':
-      //   toggleCurrentBrew(id);
-      //   break;
       default:
         return null;
     }
@@ -63,11 +60,6 @@ export class BeerCard extends Component {
           ) : (
             <FaPlus onClick={() => this.handleSaveClick('previous')} />
           )}
-          {/* <input
-            type='image'
-            src='images/Current.png'
-            onClick={() => this.handleSaveClick('current')}
-          /> */}
         </header>
         <h4 className='BeerCard__h4--name'>{beer.name}</h4>
         <p className='BeerCard__p--tagline'>{beer.tagline}</p>

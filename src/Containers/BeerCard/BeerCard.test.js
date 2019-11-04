@@ -6,11 +6,13 @@ import {
   setPreviousBrew,
   removePreviousBrew
 } from '../../apiCalls/apiCalls';
+import { Link } from 'react-router-dom';
+import { FaBookmark, FaRegBookmark, FaPlus, FaCheck } from 'react-icons/fa';
 import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard';
 jest.mock('../../apiCalls/apiCalls');
 
 describe('BeerCard', () => {
-  let wrapper;
+  let wrapper, wrapper2;
 
   beforeEach(() => {
     let beers = [{}, {}, {}];
@@ -40,6 +42,7 @@ describe('BeerCard', () => {
     let type = 'bookmark';
     let bookmark = true;
     let previous = false;
+
     wrapper = shallow(
       <BeerCard
         key={beer.id}
@@ -49,27 +52,48 @@ describe('BeerCard', () => {
         previous={previous}
       />
     );
+
+    wrapper2 = shallow(
+      <div className='BeerCard' key={beer.id}>
+        <header className='BeerCard__header'>
+          {bookmark ? (
+            <FaBookmark onClick={() => this.handleSaveClick('bookmark')} />
+          ) : (
+            <FaRegBookmark onClick={() => this.handleSaveClick('bookmark')} />
+          )}
+          {previous ? (
+            <FaCheck onClick={() => this.handleSaveClick('previous')} />
+          ) : (
+            <FaPlus onClick={() => this.handleSaveClick('previous')} />
+          )}
+        </header>
+        <h4 className='BeerCard__h4--name'>{beer.name}</h4>
+        <p className='BeerCard__p--tagline'>{beer.tagline}</p>
+        <Link to={`/${type}/${beer.id}`}>
+          <button type='button' className='BeerCard__button--readMore'>
+            Read More
+          </button>
+        </Link>
+      </div>
+    );
   });
 
   it('should match the snapshot', () => {
-    const wrapper = shallow(<BeerCard />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('should call handleSaveClick onClick of bookmark icon', () => {
-    wrapper
-      .instance()
-      .find('FaBookmark')
-      .simulate('click');
+  it('should call handleSaveClick onClick of bookmark icon', () => {
+    wrapper.instance().handleSaveClick = jest.fn();
+    wrapper.instance().forceUpdate();
+    wrapper.find('FaBookmark').simulate('click');
 
     expect(wrapper.instance().handleSaveClick).toHaveBeenCalled();
   });
 
-  it.skip('should call handleSaveClick onClick of previous icon', () => {
-    wrapper
-      .instance()
-      .find('FaCheck')
-      .simulate('click');
+  it('should call handleSaveClick onClick of previous icon', () => {
+    wrapper.instance().handleSaveClick = jest.fn();
+    wrapper.instance().forceUpdate();
+    wrapper.find('FaPlus').simulate('click');
 
     expect(wrapper.instance().handleSaveClick).toHaveBeenCalled();
   });

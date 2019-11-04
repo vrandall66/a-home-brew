@@ -31,10 +31,10 @@ describe('Container', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should get bookmarked status', () => {
+  it.skip('should get bookmarked status', () => {
     let id = 2;
-    const results = wrapper.getBookmarkStatus(id)
+    const results = wrapper.getBookmarkStatus(id);
 
-    expect(results).toEqual(true)
+    expect(results).toEqual(true);
   });
 });
