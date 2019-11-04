@@ -39,8 +39,10 @@ export class BeerCard extends Component {
   togglePreviousBrew = id => {
     const { previousBrews, setPreviousBrew, removePreviousBrew } = this.props;
     if (previousBrews.includes(id)) {
+      console.log('if id', id);
       removePreviousBrew(id);
     } else {
+      console.log('else id', id);
       setPreviousBrew(id);
     }
   };

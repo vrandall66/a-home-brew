@@ -20,7 +20,6 @@ exports[`SearchForm should match the snapshot 1`] = `
         Hops:
       </label>
       <select
-        classNamePrefix="list"
         id="hops"
         name="hops"
         onChange={[Function]}
