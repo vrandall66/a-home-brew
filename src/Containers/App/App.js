@@ -44,7 +44,12 @@ export class App extends Component {
               <>
                 <Header />
                 <Nav />
-                <Container beers={beers} type={'beers'} bookmarks={bookmarks} />
+                <Container
+                  beers={beers}
+                  type={'beers'}
+                  bookmarks={bookmarks}
+                  previous={previousBrews}
+                />
               </>
             )}
           />
@@ -59,6 +64,7 @@ export class App extends Component {
                   beers={this.renderBeersFromList(bookmarks)}
                   type={'bookmarked'}
                   bookmarks={bookmarks}
+                  previous={previousBrews}
                 />
               </>
             )}
@@ -74,6 +80,7 @@ export class App extends Component {
                   beers={this.renderBeersFromList(previousBrews)}
                   type={'previously_brewed'}
                   bookmarks={bookmarks}
+                  previous={previousBrews}
                 />
               </>
             )}
@@ -87,7 +94,7 @@ export class App extends Component {
               );
               return (
                 <>
-                  <Header />
+                  <Nav />
                   <BeerPage beerDetails={beerDetails} />
                 </>
               );
@@ -104,6 +111,7 @@ export class App extends Component {
                   beers={searchResults}
                   type={'search'}
                   bookmarks={bookmarks}
+                  previous={previousBrews}
                 />
               </>
             )}
