@@ -85,22 +85,6 @@ export class SearchForm extends Component {
     return await setSearchResults(data);
   };
 
-  generateSearchResultText = () => {
-    const { searchTerm, hops, malt, yeast } = this.state;
-    let termSearch = searchTerm;
-    let hopsSearch = hops;
-    let maltSearch = malt;
-    let yeastSearch = yeast;
-
-    let searchResultText = (
-      <h5>
-        You searched for: {termSearch && termSearch} {hopsSearch && hopsSearch}{' '}
-        {maltSearch && maltSearch} {yeastSearch && yeastSearch}
-      </h5>
-    );
-    return searchResultText;
-  };
-
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -217,7 +201,6 @@ export class SearchForm extends Component {
             </button>
           </div>
         </form>
-        {this.generateSearchResultText()}
       </>
     );
   }

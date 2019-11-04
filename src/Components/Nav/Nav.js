@@ -13,7 +13,7 @@ export const Nav = () => {
           </Link>
         </div>
         <div className='Nav__div--your-brewery'>
-          <h4 className='Nav__h4--your-brewery'>Your Brewery:</h4>
+          <h2 className='Nav__h4--your-brewery'>Your Brewery:</h2>
           <ul className='Nav__ul--your-brewery'>
             <Link to='/bookmarked'>
               <li className='Nav__li Nav__li--bookmarked'>

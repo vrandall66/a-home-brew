@@ -1,6 +1,9 @@
 .Header {
+  background: url('../../images/HomeBrew.jpg') no-repeat;
+  background-size: cover;
   grid-area: header;
-  height: 22vh;
-  margin: 2% 0%;
+  height: 30vh;
+  margin-bottom: 2%;
+  padding: 0% 1%;
   width: 100%;
 }

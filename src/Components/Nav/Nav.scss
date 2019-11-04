@@ -1,6 +1,6 @@
 .Nav {
   align-items: center;
-  background-color: #BAD9B5;
+  background-color: #3AA68B;
   display: flex;
   flex-direction: column;
   grid-area: nav;
@@ -41,4 +41,8 @@
   flex-direction: column;
   align-items: space-between;
   margin: 2% 0%;
+}
+
+a:visited {
+  color: black;
 }

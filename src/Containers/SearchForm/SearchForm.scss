@@ -3,10 +3,12 @@
 }
 
 .SearchForm {
+  align-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 22vh;
+  height: 30vh;
+  justify-content: center;
   width: 100%;
 }
 
@@ -15,8 +17,14 @@
   font-size: 100%;
 }
 
+.SearchForm__button--search:hover {
+  cursor: pointer;
+}
+
 .SearchForm__div--container {
-  width: 50%;
+  background-color: rgba(249, 225, 174, 0.8);
+  padding: 2% 0%;
+  width: 35%;
 }
 
 .SearchForm__label {
@@ -30,9 +38,13 @@
 input,
 button {
   margin: 1% 0%;
-  width: 62%;
+  width: 67%;
 }
 
 select {
-  width: 52%;
+  width: 57%;
+}
+
+select:hover {
+  cursor: pointer;
 }
