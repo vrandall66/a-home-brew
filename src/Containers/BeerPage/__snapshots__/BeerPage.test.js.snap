@@ -5,64 +5,237 @@ exports[`BeerPage should match the snapshot 1`] = `
   className="BeerPage"
   key="1"
 >
-  <section
-    className="BeerPage__section--stats"
+  <div
+    className="BeerPage__div--left"
   >
-    <ul>
-      <li>
-        ABV: 
-        4.5
-      </li>
-      <li>
-        Attenuation Level: 
-        75
-      </li>
-      <li>
-        Boil volume: 
-        25
-         
-        litres
-      </li>
-      <li>
-        EBC: 
-        20
-      </li>
-      <li>
-        IBU: 
-        60
-      </li>
-      <li>
-        PH: 
-        4.4
-      </li>
-      <li>
-        SRM: 
-        10
-      </li>
-      <li>
-        Target FG: 
-        1010
-      </li>
-      <li>
-        Target OG: 
-        1044
-      </li>
-      <li>
-        Fermentation: 
-        19
-         
-        celsius
-      </li>
-      <li>
-        Total volume this makes: 
-        20
-         
-        litres
-      </li>
-      <li>
-        Mash temperature:
-      </li>
+    <section
+      className="BeerPage__section--header"
+    >
+      <h2
+        className="BeerPage__h2--beerName"
+      >
+        Buzz
+      </h2>
+      <h3>
+        A Real Bitter Experience.
+      </h3>
+    </section>
+    <section
+      className="BeerPage__section--description"
+    >
+      <div
+        className="BeerPage__div--description"
+      >
+        <h3>
+          Description
+        </h3>
+        <p>
+          A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.
+        </p>
+      </div>
+      <section
+        className="BeerPage__section--tips-pairs-with"
+      >
+        <div
+          className="BeerPage__div--brewersTips"
+        >
+          <h3>
+            Brewer's Tips
+          </h3>
+          <p>
+            The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.
+          </p>
+        </div>
+        <div
+          className="BeerPage__div--pairsWith"
+        >
+          <h3>
+            Pairs well with:
+          </h3>
+          <ul>
+            <li
+              key="0"
+            >
+              Spicy chicken tikka masala
+            </li>
+            <li
+              key="1"
+            >
+              Grilled chicken quesadilla
+            </li>
+            <li
+              key="2"
+            >
+              Caramel toffee cake
+            </li>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </div>
+  <div
+    className="BeerPage__div--right"
+  >
+    <aside
+      className="BeerPage__aside--ingredients"
+    >
+      <h4>
+        Ingredients
+      </h4>
+      <ParentAccordion
+        accordions={
+          Array [
+            <Accordion
+              items={
+                Array [
+                  "Attribute: bitter",
+                  "When to add it: start",
+                  "undefined undefined",
+                ]
+              }
+              title="Fuggles"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "Attribute: bitter",
+                  "When to add it: start",
+                  "undefined undefined",
+                ]
+              }
+              title="First Gold"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "Attribute: flavour",
+                  "When to add it: middle",
+                  "undefined undefined",
+                ]
+              }
+              title="Fuggles"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "Attribute: flavour",
+                  "When to add it: middle",
+                  "undefined undefined",
+                ]
+              }
+              title="First Gold"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "Attribute: flavour",
+                  "When to add it: end",
+                  "undefined undefined",
+                ]
+              }
+              title="Cascade"
+            />,
+          ]
+        }
+        className="BeerPage__ParentAccordion--ingredients"
+        key="hops"
+        title="Hops"
+      />
+      <ParentAccordion
+        accordions={
+          Array [
+            <Accordion
+              items={
+                Array [
+                  "undefined undefined",
+                ]
+              }
+              title="Maris Otter Extra Pale"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "undefined undefined",
+                ]
+              }
+              title="Caramalt"
+            />,
+            <Accordion
+              items={
+                Array [
+                  "undefined undefined",
+                ]
+              }
+              title="Munich"
+            />,
+          ]
+        }
+        className="BeerPage__ParentAccordion--ingredients"
+        key="malts"
+        title="Malts"
+      />
+      <p>
+        Yeast: 
+        Wyeast 1056 - American Ale™
+      </p>
+    </aside>
+    <section
+      className="BeerPage__section--stats"
+    >
       <ul>
+        <li>
+          ABV: 
+          4.5
+        </li>
+        <li>
+          Attenuation Level: 
+          75
+        </li>
+        <li>
+          Boil volume: 
+          25
+           
+          litres
+        </li>
+        <li>
+          EBC: 
+          20
+        </li>
+        <li>
+          IBU: 
+          60
+        </li>
+        <li>
+          PH: 
+          4.4
+        </li>
+        <li>
+          SRM: 
+          10
+        </li>
+        <li>
+          Target FG: 
+          1010
+        </li>
+        <li>
+          Target OG: 
+          1044
+        </li>
+        <li>
+          Fermentation: 
+          19
+           
+          celsius
+        </li>
+        <li>
+          Total volume this makes: 
+          20
+           
+          litres
+        </li>
+        <li>
+          Mash temperature:
+        </li>
         <li
           key="0"
         >
@@ -72,169 +245,7 @@ exports[`BeerPage should match the snapshot 1`] = `
            
         </li>
       </ul>
-    </ul>
-  </section>
-  <aside
-    className="BeerPage__aside--ingredients"
-  >
-    <h4>
-      Ingredients
-    </h4>
-    <ParentAccordion
-      accordions={
-        Array [
-          <Accordion
-            items={
-              Array [
-                "Attribute: bitter",
-                "When to add it: start",
-                "undefined undefined",
-              ]
-            }
-            title="Fuggles"
-          />,
-          <Accordion
-            items={
-              Array [
-                "Attribute: bitter",
-                "When to add it: start",
-                "undefined undefined",
-              ]
-            }
-            title="First Gold"
-          />,
-          <Accordion
-            items={
-              Array [
-                "Attribute: flavour",
-                "When to add it: middle",
-                "undefined undefined",
-              ]
-            }
-            title="Fuggles"
-          />,
-          <Accordion
-            items={
-              Array [
-                "Attribute: flavour",
-                "When to add it: middle",
-                "undefined undefined",
-              ]
-            }
-            title="First Gold"
-          />,
-          <Accordion
-            items={
-              Array [
-                "Attribute: flavour",
-                "When to add it: end",
-                "undefined undefined",
-              ]
-            }
-            title="Cascade"
-          />,
-        ]
-      }
-      className="BeerPage__ParentAccordion--ingredients"
-      key="hops"
-      title="Hops"
-    />
-    <ParentAccordion
-      accordions={
-        Array [
-          <Accordion
-            items={
-              Array [
-                "undefined undefined",
-              ]
-            }
-            title="Maris Otter Extra Pale"
-          />,
-          <Accordion
-            items={
-              Array [
-                "undefined undefined",
-              ]
-            }
-            title="Caramalt"
-          />,
-          <Accordion
-            items={
-              Array [
-                "undefined undefined",
-              ]
-            }
-            title="Munich"
-          />,
-        ]
-      }
-      className="BeerPage__ParentAccordion--ingredients"
-      key="malts"
-      title="Malts"
-    />
-    <p>
-      Wyeast 1056 - American Ale™
-    </p>
-  </aside>
-  <section
-    className="BeerPage__section--header"
-  >
-    <h2
-      className="BeerPage__h2--beerName"
-    >
-      Buzz
-    </h2>
-    <h3>
-      A Real Bitter Experience.
-    </h3>
-  </section>
-  <section
-    className="BeerPage__section--description"
-  >
-    <div
-      className="BeerPage__div--description"
-    >
-      <h5>
-        Description
-      </h5>
-      <p>
-        A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.
-      </p>
-    </div>
-    <div
-      className="BeerPage__div--brewersTips"
-    >
-      <h5>
-        Brewer's Tips
-      </h5>
-      <p>
-        The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.
-      </p>
-    </div>
-    <div
-      className="BeerPage__div--pairsWith"
-    >
-      <h4>
-        Pairs well with:
-      </h4>
-      <ul>
-        <li
-          key="0"
-        >
-          Spicy chicken tikka masala
-        </li>
-        <li
-          key="1"
-        >
-          Grilled chicken quesadilla
-        </li>
-        <li
-          key="2"
-        >
-          Caramel toffee cake
-        </li>
-      </ul>
-    </div>
-  </section>
+    </section>
+  </div>
 </div>
 `;

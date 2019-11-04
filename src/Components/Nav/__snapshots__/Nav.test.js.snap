@@ -4,35 +4,52 @@ exports[`Nav should match the snapshot 1`] = `
 <div
   className="Nav"
 >
-  <Link
-    to="/"
+  <div
+    className="Nav__div--container"
   >
-    Home
-  </Link>
-  <h4>
-    Your Brewery:
-  </h4>
-  <ul
-    className="Nav__ul--your-brewery"
-  >
-    <Link
-      to="/bookmarked"
+    <div
+      className="Nav__div--header"
     >
-      <li
-        className="Nav__li Nav__li--bookmarked"
+      <Link
+        className="Nav__Link--home"
+        to="/"
       >
-        Bookmarked
-      </li>
-    </Link>
-    <Link
-      to="/previously_brewed"
+        A Home Brew
+      </Link>
+    </div>
+    <div
+      className="Nav__div--your-brewery"
     >
-      <li
-        className="Nav__li Nav__li--previous-brews"
+      <h2
+        className="Nav__h4--your-brewery"
       >
-        Previous Brews
-      </li>
-    </Link>
-  </ul>
+        Your Brewery:
+      </h2>
+      <ul
+        className="Nav__ul--your-brewery"
+      >
+        <Link
+          to="/bookmarked"
+        >
+          <li
+            className="Nav__li Nav__li--bookmarked"
+          >
+            Bookmarked
+            <FaRegBookmark />
+          </li>
+        </Link>
+        <Link
+          to="/previously_brewed"
+        >
+          <li
+            className="Nav__li Nav__li--previous-brews"
+          >
+            Previous Brews
+            <FaPlus />
+          </li>
+        </Link>
+      </ul>
+    </div>
+  </div>
 </div>
 `;

@@ -6,141 +6,176 @@ exports[`SearchForm should match the snapshot 1`] = `
     className="SearchForm"
     onSubmit={[Function]}
   >
-    <input
-      className="SearchForm__input--search-term"
-      name="searchTerm"
-      onChange={[Function]}
-      placeholder="Search by name or description"
-      value=""
-    />
-    <section>
-      <label
-        htmlFor="hops"
-      >
-        Hops:
-      </label>
-      <select
-        id="hops"
-        name="hops"
-        onChange={[Function]}
-        value="All"
-      >
-        <option
-          id="all-hops"
-          value=""
-        >
-          All
-        </option>
-        <option
-          key="0"
-          value="Amarillo"
-        >
-          Amarillo
-        </option>
-        <option
-          key="1"
-          value="First Gold"
-        >
-          First Gold
-        </option>
-        <option
-          key="2"
-          value="Fuggles"
-        >
-          Fuggles
-        </option>
-        <option
-          key="3"
-          value="Simcoe"
-        >
-          Simcoe
-        </option>
-      </select>
-    </section>
-    <section>
-      <label
-        htmlFor="malt"
-      >
-        Malt:
-      </label>
-      <select
-        id="malt"
-        onChange={[Function]}
-        value="All"
-      >
-        <option
-          value=""
-        >
-          All
-        </option>
-        <option
-          key="0"
-          value="Amber"
-        >
-          Amber
-        </option>
-        <option
-          key="1"
-          value="Brown"
-        >
-          Brown
-        </option>
-        <option
-          key="2"
-          value="Caramalt"
-        >
-          Caramalt
-        </option>
-        <option
-          key="3"
-          value="Flaked Oats"
-        >
-          Flaked Oats
-        </option>
-        <option
-          key="4"
-          value="Wheat"
-        >
-          Wheat
-        </option>
-      </select>
-    </section>
-    <section>
-      <label
-        htmlFor="yeast"
-      >
-        Yeast:
-      </label>
-      <select
-        id="yeast"
-        onChange={[Function]}
-        value="All"
-      >
-        <option
-          value=""
-        >
-          All
-        </option>
-        <option
-          key="0"
-          value="yeast"
-        >
-          yeast
-        </option>
-      </select>
-    </section>
-    <button
-      onClick={[Function]}
-      type="button"
+    <div
+      className="SearchForm__div--container"
     >
-      Search
-    </button>
+      <input
+        className="SearchForm__input--search-term"
+        name="searchTerm"
+        onChange={[Function]}
+        placeholder="Search by name or description"
+        value=""
+      />
+      <section
+        className="SearchForm__section--select-container"
+      >
+        <section>
+          <label
+            className="SearchForm__label"
+            htmlFor="hops"
+          >
+            Hops:
+             
+          </label>
+          <select
+            className="SearchForm__select"
+            id="hops"
+            onChange={[Function]}
+            value="All"
+          >
+            <option
+              id="all-hops"
+              value=""
+            >
+              All
+            </option>
+            <option
+              key="0"
+              value="Amarillo"
+            >
+              Amarillo
+            </option>
+            <option
+              key="1"
+              value="First Gold"
+            >
+              First Gold
+            </option>
+            <option
+              key="2"
+              value="Fuggles"
+            >
+              Fuggles
+            </option>
+            <option
+              key="3"
+              value="Simcoe"
+            >
+              Simcoe
+            </option>
+          </select>
+        </section>
+        <section>
+          <label
+            className="SearchForm__label"
+            htmlFor="malt"
+          >
+            Malt:
+             
+          </label>
+          <select
+            className="SearchForm__select"
+            id="malt"
+            onChange={[Function]}
+            value="All"
+          >
+            <option
+              value=""
+            >
+              All
+            </option>
+            <option
+              key="0"
+              value="Amber"
+            >
+              Amber
+            </option>
+            <option
+              key="1"
+              value="Brown"
+            >
+              Brown
+            </option>
+            <option
+              key="2"
+              value="Caramalt"
+            >
+              Caramalt
+            </option>
+            <option
+              key="3"
+              value="Flaked Oats"
+            >
+              Flaked Oats
+            </option>
+            <option
+              key="4"
+              value="Wheat"
+            >
+              Wheat
+            </option>
+          </select>
+        </section>
+        <section>
+          <label
+            className="SearchForm__label"
+            htmlFor="yeast"
+          >
+            Yeast:
+             
+          </label>
+          <select
+            className="SearchForm__select"
+            id="yeast"
+            onChange={[Function]}
+            value="All"
+          >
+            <option
+              value=""
+            >
+              All
+            </option>
+            <option
+              key="0"
+              value={
+                Array [
+                  "Wyeast 1056 - American Ale™",
+                ]
+              }
+            >
+              Wyeast 1056 - American Ale™
+            </option>
+            <option
+              key="1"
+              value={
+                Array [
+                  "Wyeast 2126 - Bohemian Lager™",
+                ]
+              }
+            >
+              Wyeast 2126 - Bohemian Lager™
+            </option>
+            <option
+              key="2"
+              value={
+                Array [
+                  "Wyeast 3333 - German Wheat™",
+                ]
+              }
+            >
+              Wyeast 3333 - German Wheat™
+            </option>
+          </select>
+        </section>
+      </section>
+      <button
+        className="SearchForm__button--search"
+        onClick={[Function]}
+        type="button"
+      >
+        Search
+      </button>
+    </div>
   </form>
-  <h5>
-    You searched for: 
-     
-     
-     
-  </h5>
 </Fragment>
 `;

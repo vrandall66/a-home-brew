@@ -103,7 +103,7 @@ export class SearchForm extends Component {
     if (searchTerm) {
       this.searchBySearchTerm();
     }
-    // this.clearInputs();
+    this.clearInputs();
     return history.push('/search');
   };
 

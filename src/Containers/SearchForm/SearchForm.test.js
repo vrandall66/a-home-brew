@@ -14,14 +14,14 @@ describe('SearchForm', () => {
           { name: 'First Gold' }
         ],
         malt: [{ name: 'Brown' }, { name: 'Wheat' }, { name: 'Amber' }],
-        yeast: 'yeast'
+        yeast: ['Wyeast 1056 - American Ale™']
       }
     },
     {
       ingredients: {
         hops: [{ name: 'Amarillo' }, { name: 'Fuggles' }, { name: 'Simcoe' }],
         malt: [{ name: 'Brown' }, { name: 'Flaked Oats' }, { name: 'Amber' }],
-        yeast: 'yeast'
+        yeast: ['Wyeast 2126 - Bohemian Lager™']
       }
     },
     {
@@ -36,7 +36,7 @@ describe('SearchForm', () => {
           { name: 'Wheat' },
           { name: 'Caramalt' }
         ],
-        yeast: 'yeast'
+        yeast: ['Wyeast 3333 - German Wheat™']
       }
     }
   ];
@@ -91,16 +91,23 @@ describe('SearchForm', () => {
     expect(sortedHops).toEqual(expected);
   });
 
-  // it('should setState onChange of select input', () => {
-  //   wrapper.instance().setState = jest.fn();
-  //   wrapper.find('#hops').simulate('mouseDown', { button: 0 });
-  //   wrapper.find('#all-hops').simulate('mouseDown', {
-  //     button: 0
-  //   })
+  it('should get all of the types of malts from the fetched beer data', () => {
+    const expected = ['Amber', 'Brown', 'Caramalt', 'Flaked Oats', 'Wheat'];
 
-  //   expect(wrapper.instance().setState).toHaveBeenCalled();
+    let sortedMalts = wrapper.instance().getMaltOptions();
+    expect(sortedMalts).toEqual(expected);
+  });
 
-  // });
+  it('should get all of the types of yeast from the fetched beer data', () => {
+    const expected = [
+      ['Wyeast 1056 - American Ale™'],
+      ['Wyeast 2126 - Bohemian Lager™'],
+      ['Wyeast 3333 - German Wheat™']
+    ];
+
+    let sortedYeasts = wrapper.instance().getYeastOptions();
+    expect(sortedYeasts).toEqual(expected);
+  });
 });
 
 describe('mapStateToProps', () => {

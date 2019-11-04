@@ -9,9 +9,11 @@ exports[`BeerCard should match the snapshot 1`] = `
     className="BeerCard__header"
   >
     <FaBookmark
+      className="BeerCard__icon"
       onClick={[Function]}
     />
     <FaPlus
+      className="BeerCard__icon"
       onClick={[Function]}
     />
   </header>

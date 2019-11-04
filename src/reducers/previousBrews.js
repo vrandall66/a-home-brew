@@ -1,5 +1,4 @@
 export const previousBrews = (state = [], action) => {
-  console.log(action);
   switch (action.type) {
     case 'SET_PREVIOUS_BREW':
       return [...state, action.beer];
