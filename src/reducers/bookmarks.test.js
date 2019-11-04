@@ -47,7 +47,7 @@ describe('bookmarks', () => {
     const initialState = [1, 2];
     const wrongAction = {
       type: 'WRONG_ACTION',
-      movies: [{}, {}, {}]
+      beer: [{}, {}, {}]
     };
 
     expect(bookmarks(initialState, wrongAction)).toEqual(initialState);
