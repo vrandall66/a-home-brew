@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion should match the snapshot 1`] = `
+<div
+  className="Accordion__section"
+>
+  <button
+    className="Accordion"
+    onClick={[Function]}
+  >
+    <p
+      className="Accordion__title"
+    >
+      Fuggles
+    </p>
+    <IoIosArrowDropdown
+      className="Accordion__icon"
+    />
+  </button>
+</div>
+`;

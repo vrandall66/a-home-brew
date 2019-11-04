@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm should match the snapshot 1`] = `
+<Fragment>
+  <form
+    className="SearchForm"
+    onSubmit={[Function]}
+  >
+    <input
+      className="SearchForm__input--search-term"
+      name="searchTerm"
+      onChange={[Function]}
+      placeholder="Search by name or description"
+      value=""
+    />
+    <section>
+      <label
+        htmlFor="hops"
+      >
+        Hops:
+      </label>
+      <select
+        id="hops"
+        onChange={[Function]}
+        value="All"
+      >
+        <option
+          value=""
+        >
+          All
+        </option>
+        <option
+          key="0"
+        />
+      </select>
+    </section>
+    <section>
+      <label
+        htmlFor="malt"
+      >
+        Malt:
+      </label>
+      <select
+        id="malt"
+        onChange={[Function]}
+        value="All"
+      >
+        <option
+          value=""
+        >
+          All
+        </option>
+        <option
+          key="0"
+        />
+      </select>
+    </section>
+    <section>
+      <label
+        htmlFor="yeast"
+      >
+        Yeast:
+      </label>
+      <select
+        id="yeast"
+        onChange={[Function]}
+        value="All"
+      >
+        <option
+          value=""
+        >
+          All
+        </option>
+        <option
+          key="0"
+          value="yeast"
+        >
+          yeast
+        </option>
+      </select>
+    </section>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Search
+    </button>
+  </form>
+  <h5>
+    You searched for: 
+     
+     
+     
+  </h5>
+</Fragment>
+`;
