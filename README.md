@@ -21,8 +21,8 @@
 
 ## Screenshots
 
-![Browse all beers](.src/images/Browse.gif)
-![Search by name/type of beer!](.src/images/SearchByType.gif)
+![Browse all beers](./src/images/Browse.gif)
+![Search by name/type of beer!](./src/images/SearchByType.gif)
 ![View all bookmarked recipes on /bookmarks route!](./src/images/BookmarksRoute.gif)
 
 ## Features
