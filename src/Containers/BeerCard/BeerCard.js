@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { FaBookmark, FaRegBookmark, FaPlus, FaCheck } from 'react-icons/fa';
+import { PropTypes } from 'prop-types';
 import {
   removeBookmark,
   setBookmark,
@@ -101,3 +102,13 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(BeerCard);
+
+BeerCard.propTypes = {
+  beers: PropTypes.array,
+  bookmarks: PropTypes.array,
+  previousBrews: PropTypes.array,
+  setBookmark: PropTypes.func,
+  removeBookmark: PropTypes.func,
+  setPreviousBrew: PropTypes.func,
+  removePreviousBrew: PropTypes.func
+};

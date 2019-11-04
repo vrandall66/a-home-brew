@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import BeerPage from './BeerPage';
-import Accordion from '../Accordion/Accordion';
 
 describe('BeerPage', () => {
   let wrapper;

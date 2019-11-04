@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { Nav } from '../Nav/Nav';
+import { Nav } from '../../Components/Nav/Nav';
 import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getAllBeers } from '../../apiCalls/apiCalls';
 import { setBeers } from '../../actions/index';
-import './App.scss';
 import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
+import './App.scss';
 
 export class App extends Component {
   componentDidMount = async () => {
@@ -142,3 +143,11 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+App.propTypes = {
+  beers: PropTypes.array,
+  bookmarks: PropTypes.array,
+  previousBrews: PropTypes.array,
+  searchResults: PropTypes.array,
+  setBeers: PropTypes.func
+};

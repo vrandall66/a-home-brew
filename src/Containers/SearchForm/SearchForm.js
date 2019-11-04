@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { setSearchResults } from '../../actions';
 import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 import './SearchForm.scss';
 
 export class SearchForm extends Component {
@@ -218,3 +219,9 @@ export default withRouter(
     mapDispatchToProps
   )(SearchForm)
 );
+
+SearchForm.propTypes = {
+  beers: PropTypes.array,
+  searchResults: PropTypes.array,
+  setSearchResults: PropTypes.func
+};

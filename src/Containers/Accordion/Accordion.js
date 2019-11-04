@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { IoIosArrowDropdown, IoIosArrowDropdownCircle } from 'react-icons/io';
+import { PropTypes } from 'prop-types';
 import './Accordion.scss';
 
 export class Accordion extends Component {
@@ -44,3 +45,8 @@ export class Accordion extends Component {
 }
 
 export default Accordion;
+
+Accordion.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.array
+};

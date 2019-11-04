@@ -1,6 +1,7 @@
 import React from 'react';
 import Accordion from '../Accordion/Accordion';
 import ParentAccordion from '../ParentAccordion/ParentAccordion';
+import { PropTypes } from 'prop-types';
 import './BeerPage.scss';
 
 export const BeerPage = ({ beerDetails }) => {
@@ -105,3 +106,7 @@ export const BeerPage = ({ beerDetails }) => {
 };
 
 export default BeerPage;
+
+BeerPage.propTypes = {
+  beerDetails: PropTypes.object
+};

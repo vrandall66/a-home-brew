@@ -1,5 +1,6 @@
 import React from 'react';
 import BeerCard from '../BeerCard/BeerCard';
+import { PropTypes } from 'prop-types';
 import './Container.scss';
 
 export const Container = ({ beers, type, bookmarks, previous }) => {
@@ -62,3 +63,10 @@ export const Container = ({ beers, type, bookmarks, previous }) => {
 };
 
 export default Container;
+
+Container.propTypes = {
+  beers: PropTypes.array,
+  type: PropTypes.string,
+  bookmarks: PropTypes.array,
+  previous: PropTypes.array
+};
