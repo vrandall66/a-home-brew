@@ -11,7 +11,7 @@ export const Nav = () => {
         <Link to='/bookmarked'>
           <li className='Nav__li Nav__li--bookmarked'>Bookmarked</li>
         </Link>
-        <Link to='/previous_brews'>
+        <Link to='/previously_brewed'>
           <li className='Nav__li Nav__li--previous-brews'>Previous Brews</li>
         </Link>
       </ul>

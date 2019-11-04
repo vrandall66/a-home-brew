@@ -25,7 +25,7 @@ exports[`Nav should match the snapshot 1`] = `
       </li>
     </Link>
     <Link
-      to="/previous_brews"
+      to="/previously_brewed"
     >
       <li
         className="Nav__li Nav__li--previous-brews"

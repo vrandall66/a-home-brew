@@ -17,12 +17,12 @@ exports[`App should match the snapshot 1`] = `
     />
     <Route
       exact={true}
-      path="/previous_brews"
+      path="/previously_brewed"
       render={[Function]}
     />
     <Route
       exact={true}
-      path="/(beers|bookmarked|previous_brews|search)/:id"
+      path="/(beers|bookmarked|previously_brewed|search)/:id"
       render={[Function]}
     />
     <Route
