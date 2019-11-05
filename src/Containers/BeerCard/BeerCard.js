@@ -51,14 +51,26 @@ export class BeerCard extends Component {
       <div className='BeerCard' key={beer.id}>
         <header className='BeerCard__header'>
           {bookmark ? (
-            <FaBookmark className="BeerCard__icon" onClick={() => this.handleSaveClick('bookmark')} />
+            <FaBookmark
+              className='BeerCard__icon'
+              onClick={() => this.handleSaveClick('bookmark')}
+            />
           ) : (
-            <FaRegBookmark className="BeerCard__icon" onClick={() => this.handleSaveClick('bookmark')} />
+            <FaRegBookmark
+              className='BeerCard__icon'
+              onClick={() => this.handleSaveClick('bookmark')}
+            />
           )}
           {previous ? (
-            <FaCheck className="BeerCard__icon" onClick={() => this.handleSaveClick('previous')} />
+            <FaCheck
+              className='BeerCard__icon'
+              onClick={() => this.handleSaveClick('previous')}
+            />
           ) : (
-            <FaPlus className="BeerCard__icon" onClick={() => this.handleSaveClick('previous')} />
+            <FaPlus
+              className='BeerCard__icon'
+              onClick={() => this.handleSaveClick('previous')}
+            />
           )}
         </header>
         <h4 className='BeerCard__h4--name'>{beer.name}</h4>

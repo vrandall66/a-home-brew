@@ -109,7 +109,7 @@ describe('mapDispatchToProps', () => {
     mappedProps.removeBookmark(1);
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
+  });
 
   it('calls dispatch with setPreviousBrew', () => {
     const mockDispatch = jest.fn();
@@ -119,7 +119,7 @@ describe('mapDispatchToProps', () => {
     mappedProps.setPreviousBrew(1);
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
+  });
 
   it('calls dispatch with removePreviousBrew', () => {
     const mockDispatch = jest.fn();
@@ -129,5 +129,5 @@ describe('mapDispatchToProps', () => {
     mappedProps.removePreviousBrew(1);
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
+  });
 });
