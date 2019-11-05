@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { setLoading, setError } from '../../actions'
+import { setLoading, setError } from '../../actions';
 import { Container, mapStateToProps, mapDispatchToProps } from './Container';
 
 describe('Container', () => {
@@ -32,9 +32,16 @@ describe('Container', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('should get bookmarked status', () => {
+  it('should get bookmarked status', () => {
     let id = 2;
-    const results = wrapper.getBookmarkStatus(id);
+    const results = wrapper.instance().getBookmarkStatus(id);
+
+    expect(results).toEqual(true);
+  });
+
+  it('should get previously brewed status', () => {
+    let id = 5;
+    const results = wrapper.instance().getPreviouslyBrewedStatus(id);
 
     expect(results).toEqual(true);
   });
@@ -57,8 +64,8 @@ describe('mapStateToProps', () => {
     const mappedProps = mapStateToProps(mockStoreState);
 
     expect(mappedProps).toEqual(expected);
-  })
-})
+  });
+});
 
 describe('mapDispatchToProps', () => {
   it('should call dispatch with setError', () => {
@@ -69,7 +76,7 @@ describe('mapDispatchToProps', () => {
     mappedProps.setError('Error');
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
+  });
 
   it('should call dispatch with setError', () => {
     const mockDispatch = jest.fn();
@@ -79,5 +86,5 @@ describe('mapDispatchToProps', () => {
     mappedProps.setLoading(true);
 
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-  })
-})
+  });
+});
