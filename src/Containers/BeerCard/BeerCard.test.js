@@ -1,23 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import {} from '../../actions';
 import {
   setBookmark,
   removeBookmark,
   setPreviousBrew,
   removePreviousBrew
-} from '../../apiCalls/apiCalls';
-import { Link } from 'react-router-dom';
-import { FaBookmark, FaRegBookmark, FaPlus, FaCheck } from 'react-icons/fa';
+} from '../../actions';
 import { BeerCard, mapStateToProps, mapDispatchToProps } from './BeerCard';
 jest.mock('../../apiCalls/apiCalls');
 
 describe('BeerCard', () => {
-  let wrapper, wrapper2;
+  let wrapper;
 
   beforeEach(() => {
-    let beers = [{}, {}, {}];
-    let bookmarks = [1, 2, 3];
-    let previousBrews = [6, 7, 8];
     let beer = {
       id: 1,
       name: 'Buzz',
@@ -38,7 +34,6 @@ describe('BeerCard', () => {
         'The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.',
       contributed_by: 'Sam Mason <samjbmason>'
     };
-    let id = 1;
     let type = 'bookmark';
     let bookmark = true;
     let previous = false;
@@ -51,30 +46,6 @@ describe('BeerCard', () => {
         bookmark={bookmark}
         previous={previous}
       />
-    );
-
-    wrapper2 = shallow(
-      <div className='BeerCard' key={beer.id}>
-        <header className='BeerCard__header'>
-          {bookmark ? (
-            <FaBookmark onClick={() => this.handleSaveClick('bookmark')} />
-          ) : (
-            <FaRegBookmark onClick={() => this.handleSaveClick('bookmark')} />
-          )}
-          {previous ? (
-            <FaCheck onClick={() => this.handleSaveClick('previous')} />
-          ) : (
-            <FaPlus onClick={() => this.handleSaveClick('previous')} />
-          )}
-        </header>
-        <h4 className='BeerCard__h4--name'>{beer.name}</h4>
-        <p className='BeerCard__p--tagline'>{beer.tagline}</p>
-        <Link to={`/${type}/${beer.id}`}>
-          <button type='button' className='BeerCard__button--readMore'>
-            Read More
-          </button>
-        </Link>
-      </div>
     );
   });
 
@@ -97,4 +68,66 @@ describe('BeerCard', () => {
 
     expect(wrapper.instance().handleSaveClick).toHaveBeenCalled();
   });
+});
+
+describe('mapStateToProps', () => {
+  it('should return an object with beers, bookmarks and previousBrews arrays', () => {
+    const mockStoreState = {
+      beers: [{}, {}, {}],
+      bookmarks: [1, 2],
+      previousBrews: [5]
+    };
+
+    const expected = {
+      beers: [{}, {}, {}],
+      bookmarks: [1, 2],
+      previousBrews: [5]
+    };
+
+    const mappedProps = mapStateToProps(mockStoreState);
+
+    expect(mappedProps).toEqual(expected);
+  });
+});
+
+describe('mapDispatchToProps', () => {
+  it('calls dispatch with setBookmark', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = setBookmark(1);
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.setBookmark(1);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  });
+
+  it('calls dispatch with removeBookmark', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = removeBookmark(1);
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.removeBookmark(1);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  })
+
+  it('calls dispatch with setPreviousBrew', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = setPreviousBrew(1);
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.setPreviousBrew(1);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  })
+
+  it('calls dispatch with removePreviousBrew', () => {
+    const mockDispatch = jest.fn();
+    const actionToDispatch = removePreviousBrew(1);
+
+    const mappedProps = mapDispatchToProps(mockDispatch);
+    mappedProps.removePreviousBrew(1);
+
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+  })
 });
