@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { setLoading, setError } from '../../actions';
+import loading from '../../images/beer-pour.gif';
 import './Container.scss';
 
 export class Container extends Component {
@@ -37,8 +38,16 @@ export class Container extends Component {
   };
 
   render() {
-    let beers = this.displayBeers();
-    return <div className='Container'>{beers}</div>;
+    const { beers } = this.props;
+    return (
+      <div className='Container'>
+        {beers.length ? (
+          this.displayBeers()
+        ) : (
+          <img src={loading} className="Container__gif--loading" alt='Loading' />
+        )}
+      </div>
+    );
   }
 }
 
