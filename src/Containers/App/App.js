@@ -22,16 +22,16 @@ export class App extends Component {
     }
   };
 
-  renderBeersFromList = list => {
-    const { beers } = this.props;
-    let renderable = beers.reduce((selectedBeers, beer) => {
-      if (list.includes(beer.id)) {
-        selectedBeers.push(beer);
-      }
-      return selectedBeers;
-    }, []);
-    return renderable;
-  };
+  // renderBeersFromList = list => {
+  //   const { beers } = this.props;
+  //   let renderable = beers.reduce((selectedBeers, beer) => {
+  //     if (list.includes(beer.id)) {
+  //       selectedBeers.push(beer);
+  //     }
+  //     return selectedBeers;
+  //   }, []);
+  //   return renderable;
+  // };
 
   render() {
     const { beers, bookmarks, previousBrews, searchResults } = this.props;
@@ -46,7 +46,7 @@ export class App extends Component {
                 <Header />
                 <Nav />
                 <Container
-                  beers={beers}
+                  list={beers}
                   type={'beers'}
                   bookmarks={bookmarks}
                   previous={previousBrews}
@@ -62,7 +62,7 @@ export class App extends Component {
                 <Header />
                 <Nav />
                 <Container
-                  beers={this.renderBeersFromList(bookmarks)}
+                  list={bookmarks}
                   type={'bookmarked'}
                   bookmarks={bookmarks}
                   previous={previousBrews}
@@ -78,7 +78,7 @@ export class App extends Component {
                 <Header />
                 <Nav />
                 <Container
-                  beers={this.renderBeersFromList(previousBrews)}
+                  list={previousBrews}
                   type={'previously_brewed'}
                   bookmarks={bookmarks}
                   previous={previousBrews}
@@ -110,7 +110,7 @@ export class App extends Component {
                 <Header />
                 <Nav />
                 <Container
-                  beers={searchResults}
+                  list={searchResults}
                   type={'search'}
                   bookmarks={bookmarks}
                   previous={previousBrews}

@@ -8,6 +8,20 @@ import loading from '../../images/beer-pour.gif';
 import './Container.scss';
 
 export class Container extends Component {
+  componentDidMount() {
+    console.log(this.props);
+  }
+  renderBeersFromList = list => {
+    const { beers } = this.props;
+    let renderable = beers.reduce((selectedBeers, beer) => {
+      if (list.includes(beer.id)) {
+        selectedBeers.push(beer);
+      }
+      return selectedBeers;
+    }, []);
+    return renderable;
+  };
+
   getBookmarkStatus = id => {
     const { bookmarks } = this.props;
     let status = bookmarks.includes(id) ? true : false;
@@ -21,7 +35,7 @@ export class Container extends Component {
   };
 
   displayBeers = () => {
-    const { beers, type } = this.props;
+    const { beers, list } = this.props;
     return beers.map(beer => {
       let bookmark = this.getBookmarkStatus(beer.id);
       let previous = this.getPreviouslyBrewedStatus(beer.id);
@@ -29,7 +43,6 @@ export class Container extends Component {
         <BeerCard
           key={beer.id}
           beer={beer}
-          type={type}
           bookmark={bookmark}
           previous={previous}
         />
@@ -38,23 +51,33 @@ export class Container extends Component {
   };
 
   render() {
-    const { beers } = this.props;
+    const { beers, list, bookmarks, previousBrews, searchResults } = this.props;
     return (
       <div className='Container'>
         {beers.length ? (
-          this.displayBeers()
+          this.renderBeersFromList(list)
         ) : (
-          <img src={loading} className="Container__gif--loading" alt='Loading' />
+          <img
+            src={loading}
+            className='Container__gif--loading'
+            alt='Loading'
+          />
         )}
       </div>
     );
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
+export const mapStateToProps = ({
   beers,
   bookmarks,
-  previousBrews
+  previousBrews,
+  searchResults
+}) => ({
+  beers,
+  bookmarks,
+  previousBrews,
+  searchResults
 });
 
 export const mapDispatchToProps = dispatch =>
