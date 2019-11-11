@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import BeerCard from '../BeerCard/BeerCard';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { setError, setLoading } from '../../actions';
+// import { setError, setLoading } from '../../actions';
 import loading from '../../images/beer-pour.gif';
 import './Container.scss';
 

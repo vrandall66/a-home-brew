@@ -2,12 +2,14 @@
   background-color: rgba(249, 225, 174, 0.8);
   display: flex;
   flex-direction: column;
-  height: 69vh;
-  margin: 0% 1.25%;
-  margin-top: 6%;
+  height: 67vh;
+  // margin: 0% 1.15%;
+  // margin-top: 6%;
   overflow: scroll;
   padding: 2% 0% 4% 0%;
-  width: 78vw;
+  position: relative;
+    top: 150%;
+  width: 80vw;
 }
 
 ul {
