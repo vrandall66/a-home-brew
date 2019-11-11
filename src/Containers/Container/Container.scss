@@ -1,17 +1,21 @@
+// * {
+//   border: 1px solid red;
+// }
+
 .Container {
   display: grid;
   flex-wrap: wrap;
   grid-area: container;
-  grid-gap: 15px 15px;
+  grid-gap: 25px 25px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: auto;
-  height: 66vh;
+  height: 64vh;
   justify-items: center;
   justify-content: space-between;
-  margin-top: 8%;
-  margin-bottom: 2%;
   overflow: scroll;
   padding: 0px 20px;
+  position: relative;
+  top: 16%;
   width: 80vw;
 }
 
@@ -27,4 +31,4 @@ a {
 .Container__gif--loading {
   height: 350px;
   width: 200px;
-} 
+}

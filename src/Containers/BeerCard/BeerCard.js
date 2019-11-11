@@ -64,7 +64,7 @@ export class BeerCard extends Component {
         <h4 className='BeerCard__h4--name'>{beer.name}</h4>
         <p className='BeerCard__p--tagline'>{beer.tagline}</p>
         <Link to={`/${type}/${beer.id}`}>
-          <button type='button' className='BeerCard__button--readMore'>
+          <button type='button' className='BeerCard__icon BeerCard__button--readMore'>
             Read More
           </button>
         </Link>
