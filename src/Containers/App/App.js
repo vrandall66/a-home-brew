@@ -6,7 +6,7 @@ import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getAllBeers } from '../../apiCalls/apiCalls';
-import { setBeers } from '../../actions/index';
+import { setBeers, setError } from '../../actions/index';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import './App.scss';
@@ -18,7 +18,7 @@ export class App extends Component {
       let beerData = await getAllBeers([], 1);
       setBeers(beerData);
     } catch ({ message }) {
-      console.log(message);
+      setError(message);
     }
   };
 
@@ -137,7 +137,7 @@ export const mapStateToProps = ({
 });
 
 export const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ setBeers }, dispatch);
+  return bindActionCreators({ setBeers, setError }, dispatch);
 };
 
 export default connect(

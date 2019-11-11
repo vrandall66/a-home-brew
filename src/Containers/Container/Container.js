@@ -1,68 +1,73 @@
-import React from 'react';
+import React, { Component } from 'react';
 import BeerCard from '../BeerCard/BeerCard';
+import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { setLoading, setError } from '../../actions';
+import loading from '../../images/beer-pour.gif';
 import './Container.scss';
 
-export const Container = ({ beers, type, bookmarks, previous }) => {
-  const getBookmarkStatus = id => {
+export class Container extends Component {
+  getBookmarkStatus = id => {
+    const { bookmarks } = this.props;
     let status = bookmarks.includes(id) ? true : false;
     return status;
   };
 
-  const getPreviouslyBrewedStatus = id => {
+  getPreviouslyBrewedStatus = id => {
+    const { previous } = this.props;
     let status = previous.includes(id) ? true : false;
     return status;
   };
 
-  const displayBeers = beers.map(beer => {
-    let bookmark = getBookmarkStatus(beer.id);
-    let previous = getPreviouslyBrewedStatus(beer.id);
+  displayBeers = () => {
+    const { beers, type } = this.props;
+    return beers.map(beer => {
+      let bookmark = this.getBookmarkStatus(beer.id);
+      let previous = this.getPreviouslyBrewedStatus(beer.id);
+      return (
+        <BeerCard
+          key={beer.id}
+          beer={beer}
+          type={type}
+          bookmark={bookmark}
+          previous={previous}
+        />
+      );
+    });
+  };
+
+  render() {
+    const { beers } = this.props;
     return (
-      <BeerCard
-        key={beer.id}
-        beer={beer}
-        type={type}
-        bookmark={bookmark}
-        previous={previous}
-      />
+      <div className='Container'>
+        {beers.length ? (
+          this.displayBeers()
+        ) : (
+          <img
+            src={loading}
+            className='Container__gif--loading'
+            alt='Loading'
+          />
+        )}
+      </div>
     );
-  });
-
-  switch (type) {
-    case 'browse':
-      return (
-        <div className='Container' key={'browse'}>
-          {displayBeers}
-        </div>
-      );
-    case 'bookmarked':
-      return (
-        <div className='Container' key={'bookmarked'}>
-          {displayBeers}
-        </div>
-      );
-    case 'previously_brewed':
-      return (
-        <div className='Container' key={'previously_brewed'}>
-          {displayBeers}
-        </div>
-      );
-    case 'search_results':
-      return (
-        <div className='Container' key={'search_results'}>
-          {displayBeers}
-        </div>
-      );
-    default:
-      return (
-        <div className='Container' key={'beers'}>
-          {displayBeers}
-        </div>
-      );
   }
-};
+}
 
-export default Container;
+export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
+  beers,
+  bookmarks,
+  previousBrews
+});
+
+export const mapDispatchToProps = dispatch =>
+  bindActionCreators({ setError, setLoading }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Container);
 
 Container.propTypes = {
   beers: PropTypes.array,
