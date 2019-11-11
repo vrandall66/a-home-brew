@@ -6,17 +6,19 @@ import { Header } from '../../Components/Header/Header';
 import { Container } from '../Container/Container';
 import { BeerPage } from '../BeerPage/BeerPage';
 import { getAllBeers } from '../../apiCalls/apiCalls';
-import { setBeers, setError } from '../../actions/index';
+import { setBeers, setError, setLoading } from '../../actions/index';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import './App.scss';
 
 export class App extends Component {
   componentDidMount = async () => {
-    const { setBeers } = this.props;
+    const { setBeers, setError, setLoading } = this.props;
     try {
       let beerData = await getAllBeers([], 1);
+      setLoading(true);
       setBeers(beerData);
+      setLoading(false);
     } catch ({ message }) {
       setError(message);
     }
@@ -128,16 +130,18 @@ export const mapStateToProps = ({
   beers,
   bookmarks,
   previousBrews,
-  searchResults
+  searchResults,
+  hasError
 }) => ({
   beers,
   bookmarks,
   previousBrews,
-  searchResults
+  searchResults,
+  hasError
 });
 
 export const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ setBeers, setError }, dispatch);
+  return bindActionCreators({ setBeers, setError, setLoading }, dispatch);
 };
 
 export default connect(

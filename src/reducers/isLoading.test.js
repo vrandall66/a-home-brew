@@ -1,10 +1,10 @@
-import { setLoading } from './setLoading';
+import { isLoading } from './isLoading';
 
 describe('setLoading', () => {
   it('should return the initial state', () => {
     const expected = false;
 
-    const result = setLoading(undefined, {});
+    const result = isLoading(undefined, {});
 
     expect(result).toEqual(expected);
   });
@@ -18,7 +18,7 @@ describe('setLoading', () => {
 
     const result = false;
 
-    expect(setLoading(initialState, action)).toEqual(result);
+    expect(isLoading(initialState, action)).toEqual(result);
   });
 
   it('should not output the case of IS_LOADING action type with the incorrect action', () => {
@@ -28,6 +28,6 @@ describe('setLoading', () => {
       movies: false
     };
 
-    expect(setLoading(initialState, incorrectAction)).toEqual(initialState);
+    expect(isLoading(initialState, incorrectAction)).toEqual(initialState);
   });
 });

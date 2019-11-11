@@ -3,7 +3,7 @@ import BeerCard from '../BeerCard/BeerCard';
 import { bindActionCreators } from 'redux';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { setLoading, setError } from '../../actions';
+import { setError, setLoading } from '../../actions';
 import loading from '../../images/beer-pour.gif';
 import './Container.scss';
 
@@ -38,35 +38,44 @@ export class Container extends Component {
   };
 
   render() {
-    const { beers } = this.props;
+    const { isloading } = this.props;
     return (
       <div className='Container'>
-        {beers.length ? (
-          this.displayBeers()
-        ) : (
+        {isloading ? (
           <img
             src={loading}
             className='Container__gif--loading'
             alt='Loading'
           />
+        ) : (
+          this.displayBeers()
         )}
       </div>
     );
   }
 }
 
-export const mapStateToProps = ({ beers, bookmarks, previousBrews }) => ({
+export const mapStateToProps = ({
   beers,
   bookmarks,
-  previousBrews
+  previousBrews,
+  isLoading,
+  hasError
+}) => ({
+  beers,
+  bookmarks,
+  previousBrews,
+  isLoading,
+  hasError
 });
 
-export const mapDispatchToProps = dispatch =>
-  bindActionCreators({ setError, setLoading }, dispatch);
+// export const mapDispatchToProps = dispatch =>
+//   bindActionCreators({ setError, setLoading }, dispatch);
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
+  // mapDispatchToProps
 )(Container);
 
 Container.propTypes = {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Container from './Container';
+// import { setLoading, setError } from '../../actions';
+import { Container, mapStateToProps } from './Container';
 
 describe('Container', () => {
   let wrapper;
@@ -38,3 +39,45 @@ describe('Container', () => {
     expect(results).toEqual(true);
   });
 });
+
+describe('mapStateToProps', () => {
+  it('should return an object with beers, bookmarks and previous arrays', () => {
+    const mockStoreState = {
+      beers: [{}, {}, {}],
+      bookmarks: [1, 2],
+      previousBrews: [5]
+    };
+
+    const expected = {
+      beers: [{}, {}, {}],
+      bookmarks: [1, 2],
+      previousBrews: [5]
+    };
+
+    const mappedProps = mapStateToProps(mockStoreState);
+
+    expect(mappedProps).toEqual(expected);
+  });
+});
+
+// describe('mapDispatchToProps', () => {
+//   it('should call dispatch with setError', () => {
+//     const mockDispatch = jest.fn();
+//     const actionToDispatch = setError('Error');
+
+//     const mappedProps = mapDispatchToProps(mockDispatch);
+//     mappedProps.setError('Error');
+
+//     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+//   });
+
+//   it('should call dispatch with setLoading', () => {
+//     const mockDispatch = jest.fn();
+//     const actionToDispatch = setLoading(true);
+
+//     const mappedProps = mapDispatchToProps(mockDispatch);
+//     mappedProps.setLoading(true);
+
+//     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+//   });
+// });

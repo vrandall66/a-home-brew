@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { beers } from './beers';
-import { setLoading } from './setLoading';
+import { isLoading } from './isLoading';
+import { hasError } from './error';
 import { bookmarks } from './bookmarks';
 import { previousBrews } from './previousBrews';
 import { currentBrews } from './currentBrews';
@@ -8,7 +9,8 @@ import { searchResults } from './searchResults';
 
 const rootReducer = combineReducers({
   beers,
-  setLoading,
+  isLoading,
+  hasError,
   bookmarks,
   previousBrews,
   currentBrews,
