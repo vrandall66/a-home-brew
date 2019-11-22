@@ -1,5 +1,7 @@
 # A Home Brew
 
+#### Welcome to A Home Brew, an application designed for the up and coming home brewer who want to transition from buying brew kits to purchasing their own brewing ingredients. The user can browse or search through 325 beers by style and name. Do you have extra hops, malt or yeast ingredients left over from a previous brew? Select that ingredient from the drop down menus and see all of the beers you can make with your leftover ingredients! Bookmark any beers you would like to brew in the future, and keep track of all of your previous brews!
+
 ## Table of Contents
 
 - [Built With](#Built-With)
